@@ -37,21 +37,43 @@ tem_manga BOOLEAN NOT NULL,
 dublado BOOLEAN NOT NULL
 );
 
-CREATE TABLE atores (
+CREATE TABLE elenco (
 id SERIAL PRIMARY KEY,
 nome VARCHAR(255) NOT NULL,
 nacionalidade VARCHAR(100),
 dt_nascimento DATE
 );
 
-CREATE TABLE filme_ator ( --tabela N para N--
+CREATE TABLE filme_elenco ( --tabela N para N--
 filme_id INTEGER NOT NULL,
-ator_id INTEGER NOT NULL,
+elenco_id INTEGER NOT NULL,
 
-PRIMARY KEY (filme_id, ator_id), -- faz com que a mesma assoc. não possa ser cadastrada 2 vezes --
+PRIMARY KEY (filme_id, elenco_id), -- faz com que a mesma assoc. não possa ser cadastrada 2 vezes --
 
 FOREIGN KEY (filme_id) REFERENCES filmes(id) ON DELETE CASCADE, -- evitar problemas com deletes de registros  dependentes--
-FOREIGN KEY (ator_id) REFERENCES atores(id) ON DELETE CASCADE
+FOREIGN KEY (elenco_id) REFERENCES elenco (id) ON DELETE CASCADE
+
+);
+
+CREATE TABLE serie_elenco ( --tabela N para N--
+serie_id INTEGER NOT NULL,
+elenco_id INTEGER NOT NULL,
+
+PRIMARY KEY (serie_id, elenco_id), -- faz com que a mesma assoc. não possa ser cadastrada 2 vezes --
+
+FOREIGN KEY (serie_id) REFERENCES series(id) ON DELETE CASCADE, -- evitar problemas com deletes de registros  dependentes--
+FOREIGN KEY (elenco_id) REFERENCES elenco (id) ON DELETE CASCADE
+
+);
+
+CREATE TABLE anime_elenco ( --tabela N para N--
+anime_id INTEGER NOT NULL,
+elenco_id INTEGER NOT NULL,
+
+PRIMARY KEY (anime_id, elenco_id), -- faz com que a mesma assoc. não possa ser cadastrada 2 vezes --
+
+FOREIGN KEY (anime_id) REFERENCES animes(id) ON DELETE CASCADE, -- evitar problemas com deletes de registros  dependentes--
+FOREIGN KEY (elenco_id) REFERENCES elenco (id) ON DELETE CASCADE
 
 );
 
