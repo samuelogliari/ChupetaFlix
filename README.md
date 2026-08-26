@@ -17,3 +17,13 @@ Funcionalidades principais previstas:
 * Atualização de cadastros;
 * Exclusão de Registros;
 * Associação de atores aos filmes;
+
+
+## Commits
+O projeto utilizará a convenção Conventional Commits para manter mensagens de commit padronizadas, facilitando identificação de alterações.
+- feat -> Nova Funcionalidade;
+- fix -> Correção de erro;
+- docs -> alteração de documentação
+- refactor -> alteração na estrutura do código, sem modificar funcionalidade;
+- test -> criação ou alteração de testes;
+- chore -> manutenção e config do projeto.
