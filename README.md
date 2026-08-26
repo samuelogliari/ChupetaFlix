@@ -23,7 +23,7 @@ Funcionalidades principais previstas:
 O projeto utilizará a convenção Conventional Commits para manter mensagens de commit padronizadas, facilitando identificação de alterações.
 - feat -> Nova Funcionalidade;
 - fix -> Correção de erro;
-- docs -> alteração de documentação
-- refactor -> alteração na estrutura do código, sem modificar funcionalidade;
-- test -> criação ou alteração de testes;
-- chore -> manutenção e config do projeto.
+- docs -> Alteração de documentação
+- refactor -> Alteração na estrutura do código, sem modificar funcionalidade;
+- test -> Criação ou alteração de testes;
+- chore -> manutenção e configuração do projeto.
