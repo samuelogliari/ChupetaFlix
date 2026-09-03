@@ -1,7 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-package com.mycompany.projetopratico2;
+package chupetaflix;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import telas.TelaMenu;
