@@ -4,7 +4,9 @@
  */
 package controladores;
 
+import dao.FilmeDAO;
 import entidades.Filme;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -12,43 +14,22 @@ import java.util.ArrayList;
  * @author samuel.ogliari
  */
 public class ControlaFilme {
-     private static ArrayList<Filme> filmes = new ArrayList(); //static para manter as infos anteriores 
-    private static int codigo = 1;
 
-    public void salvar(Filme f) {
-        f.setCodigo(codigo);
-        filmes.add(f);
-        codigo++;
+    private FilmeDAO filmeDAO = new FilmeDAO();
+
+    public void salvar(Filme filme) throws SQLException {
+        filmeDAO.salvar(filme);
     }
 
-    public void editar(Filme f) {
-        for (int i = 0; i < filmes.size(); i++) {
-            if (filmes.get(i).getCodigo() == f.getCodigo()) {
-                filmes.set(i, f);
-                break;
-            }
-        }
+    public ArrayList<Filme> recuperarTodos() throws SQLException {
+        return filmeDAO.recuperarTodos();
     }
 
-    public void excluir(int codigo) {
-        for (int i = 0; i < filmes.size(); i++) {
-            if (filmes.get(i).getCodigo() == codigo) {
-                filmes.remove(i);
-                break;
-            }
-        }
+    public Filme recuperarUm(int codigo) throws SQLException {
+        return filmeDAO.recuperarUm(codigo);
     }
 
-    public Filme recuperarUm(int codigo) {
-        for (int i = 0; i < filmes.size(); i++) {
-            if (filmes.get(i).getCodigo() == codigo) {
-                return filmes.get(i);
-            }
-        }
-        return null;
-    }
-
-    public ArrayList<Filme> recuperarTodos() {
-        return filmes;
+    public void editar(Filme filme) throws SQLException {
+        filmeDAO.editar(filme);
     }
 }

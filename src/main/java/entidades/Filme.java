@@ -11,10 +11,10 @@ package entidades;
 public class Filme extends Midia {
 
     private String diretor;
-    private String duracao;
+    private int duracao;
     private String classificacao;
 
-    public Filme(String titulo, String genero, String diretor, String duracao, String classificacao, int anoLancamento) {
+    public Filme(String titulo, String genero, String diretor, int duracao, String classificacao, int anoLancamento) {
         super(titulo, genero, anoLancamento);
         this.diretor = diretor;
         this.duracao = duracao;
@@ -29,11 +29,11 @@ public class Filme extends Midia {
         this.diretor = diretor;
     }
 
-    public String getDuracao() {
+    public int getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(String duracao) {
+    public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
 
