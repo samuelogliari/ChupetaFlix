@@ -255,8 +255,8 @@ public class TelaFilme extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Filme filme = criarFilme(); 
-                
+        Filme filme = criarFilme();
+
         if (codigoFilme == 0) {
             controladorFilme.salvar(filme);
         } else {
@@ -270,7 +270,16 @@ public class TelaFilme extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-   
+    private Filme criarFilme() {
+        return new Filme(
+                txtTitulo.getText(),
+                txtGenero.getText(),
+                txtDiretor.getText(),
+                txtDuracao.getText(),
+                txtClassificacao.getText(),
+                (int) spnAno.getValue()
+        );
+    }
 
     private void limpaCampos() {
         txtTitulo.setText("");
