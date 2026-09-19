@@ -255,36 +255,32 @@ public class TelaFilme extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Filme f = new Filme(
-                txtTitulo.getText(),
-                txtGenero.getText(),
-                txtDiretor.getText(),
-                txtDuracao.getText(),
-                txtClassificacao.getText(),
-                (int) spnAno.getValue()
-        );
-
+        Filme filme = criarFilme(); 
+                
         if (codigoFilme == 0) {
-            controladorFilme.salvar(f);
+            controladorFilme.salvar(filme);
         } else {
-            f.setCodigo(codigoFilme);
-            controladorFilme.editar(f);
+            filme.setCodigo(codigoFilme);
+            controladorFilme.editar(filme);
             codigoFilme = 0;
         }
         btnSalvar.setText("Salvar");
         montaTabela();
+        limpaCampos();
 
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+   
+
+    private void limpaCampos() {
         txtTitulo.setText("");
         txtGenero.setText("");
         txtDiretor.setText("");
         txtDuracao.setText("");
         txtClassificacao.setText("");
         spnAno.setValue(0);
-
         txtTitulo.requestFocus();
-
-
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String idString = String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0)); //quando selecionar a linha com o mouse
@@ -304,6 +300,7 @@ public class TelaFilme extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
+
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         montaTabela();
 
@@ -313,7 +310,7 @@ public class TelaFilme extends javax.swing.JFrame {
         int confirmacao = Mensagem.confirmacao("Deseja realmente excluir?");
         if (confirmacao == 0) {
             int codigo = Integer.parseInt(String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0))); //pega o codigo da coluna 0, com o codigo
-            controladorFilme .excluir(codigo); //que queremos, selecionando com o mouse, transforma String em int. e usamos o codigo selecionado para o resto
+            controladorFilme.excluir(codigo); //que queremos, selecionando com o mouse, transforma String em int. e usamos o codigo selecionado para o resto
             montaTabela();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
