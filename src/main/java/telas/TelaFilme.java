@@ -18,8 +18,8 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class TelaFilme extends javax.swing.JFrame {
 
-    private ControlaFilme cf = new ControlaFilme();
-    int codigo = 0;
+    private ControlaFilme contoladorFilme = new ControlaFilme();
+    int codigoFilme = 0;
 
     public TelaFilme() {
         initComponents();
@@ -27,15 +27,15 @@ public class TelaFilme extends javax.swing.JFrame {
     }
 
     private void montaTabela() {
-        ArrayList<Filme> itens = cf.recuperarTodos();
+        ArrayList<Filme> filmes = controladorFilme.recuperarTodos();
 
         String[] colunas = {"ID", "Título", "Gênero", "Diretor", "Duração", "Classificação", "Ano"};
 
         DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
 
-        for (int i = 0; i < itens.size(); i++) {
-            Filme f = itens.get(i);
-            Object[] linha = {f.getCodigo(), f.getTitulo(), f.getGenero(), f.getDiretor(), f.getDuracao(), f.getClassificacao(), f.getAnoLancamento()};
+        for (int i = 0; i < filmes.size(); i++) {
+            Filme filme = filmes.get(i);
+            Object[] linha = {filme.getCodigo(), filme.getTitulo(), filme.getGenero(), filme.getDiretor(), filme.getDuracao(), filme.getClassificacao(), filme.getAnoLancamento()};
             modelo.addRow(linha);
         }
 
@@ -110,6 +110,12 @@ public class TelaFilme extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tblItens);
+
+        txtTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTituloActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setBackground(new java.awt.Color(153, 153, 153));
         btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
@@ -258,12 +264,12 @@ public class TelaFilme extends javax.swing.JFrame {
                 (int) spnAno.getValue()
         );
 
-        if (codigo == 0) {
-            cf.salvar(f);
+        if (codigoFilme == 0) {
+            controladorFilme.salvar(f);
         } else {
-            f.setCodigo(codigo);
-            cf.editar(f);
-            codigo = 0;
+            f.setCodigo(codigoFilme);
+            controladorFilme.editar(f);
+            codigoFilme = 0;
         }
         btnSalvar.setText("Salvar");
         montaTabela();
@@ -284,15 +290,15 @@ public class TelaFilme extends javax.swing.JFrame {
         String idString = String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0)); //quando selecionar a linha com o mouse
         int id = Integer.parseInt(idString);
 
-        Filme f = cf.recuperarUm(id);
-        if (f != null) {
-            codigo = f.getCodigo();
-            txtTitulo.setText(f.getTitulo());
-            txtGenero.setText(f.getGenero());
-            txtDiretor.setText(f.getDiretor());
-            txtDuracao.setText(f.getDuracao());
-            txtClassificacao.setText(f.getClassificacao());
-            spnAno.setValue(f.getAnoLancamento());
+        Filme filme = controladorFilme.recuperarUm(id);
+        if (filme != null) {
+            codigoFilme = filme.getCodigo();
+            txtTitulo.setText(filme.getTitulo());
+            txtGenero.setText(filme.getGenero());
+            txtDiretor.setText(filme.getDiretor());
+            txtDuracao.setText(filme.getDuracao());
+            txtClassificacao.setText(filme.getClassificacao());
+            spnAno.setValue(filme.getAnoLancamento());
 
             btnSalvar.setText("Atualizar");
         }
@@ -307,16 +313,20 @@ public class TelaFilme extends javax.swing.JFrame {
         int confirmacao = Mensagem.confirmacao("Deseja realmente excluir?");
         if (confirmacao == 0) {
             int codigo = Integer.parseInt(String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0))); //pega o codigo da coluna 0, com o codigo
-            cf .excluir(codigo); //que queremos, selecionando com o mouse, transforma String em int. e usamos o codigo selecionado para o resto
+            controladorFilme .excluir(codigo); //que queremos, selecionando com o mouse, transforma String em int. e usamos o codigo selecionado para o resto
             montaTabela();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        TelaMenu tm = new TelaMenu();
-        tm.setVisible(true);
+        TelaMenu telaMenu = new TelaMenu();
+        telaMenu.setVisible(true);
         this.dispose(); // fecha o menu atual
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTituloActionPerformed
 
     /**
      * @param args the command line arguments
