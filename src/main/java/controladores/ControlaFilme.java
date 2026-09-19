@@ -32,4 +32,8 @@ public class ControlaFilme {
     public void editar(Filme filme) throws SQLException {
         filmeDAO.editar(filme);
     }
+    
+    public void excluir(int codigo) throws SQLException {
+    filmeDAO.excluir(codigo);
+    }
 }
