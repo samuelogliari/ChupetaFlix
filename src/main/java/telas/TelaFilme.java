@@ -18,11 +18,13 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class TelaFilme extends javax.swing.JFrame {
 
-    private ControlaFilme contoladorFilme = new ControlaFilme();
+    private final ControlaFilme controladorFilme = new ControlaFilme();
     int codigoFilme = 0;
 
     public TelaFilme() {
         initComponents();
+        setLocationRelativeTo(null);
+        spnAno.setValue(2000);
         montaTabela();
     }
 
@@ -275,7 +277,7 @@ public class TelaFilme extends javax.swing.JFrame {
                 txtTitulo.getText(),
                 txtGenero.getText(),
                 txtDiretor.getText(),
-                txtDuracao.getText(),
+                Integer.parseInt(txtDuracao.getText()),
                 txtClassificacao.getText(),
                 (int) spnAno.getValue()
         );
@@ -301,7 +303,7 @@ public class TelaFilme extends javax.swing.JFrame {
             txtTitulo.setText(filme.getTitulo());
             txtGenero.setText(filme.getGenero());
             txtDiretor.setText(filme.getDiretor());
-            txtDuracao.setText(filme.getDuracao());
+            txtDuracao.setText(String.valueOf(filme.getDuracao()));
             txtClassificacao.setText(filme.getClassificacao());
             spnAno.setValue(filme.getAnoLancamento());
 

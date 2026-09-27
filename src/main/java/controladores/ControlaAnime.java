@@ -4,7 +4,10 @@
  */
 package controladores;
 
+import apoio.Mensagem;
+import dao.AnimeDAO;
 import entidades.Anime;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -13,43 +16,47 @@ import java.util.ArrayList;
  */
 public class ControlaAnime {
 
-    private static ArrayList<Anime> animes = new ArrayList(); //static para manter as infos anteriores 
-    private static int codigo = 1;
+    private final AnimeDAO animeDAO = new AnimeDAO();
 
-    public void salvar(Anime a) {
-        a.setCodigo(codigo);
-        animes.add(a);
-        codigo++;
-    }
-
-    public void editar(Anime a) {
-        for (int i = 0; i < animes.size(); i++) {
-            if (animes.get(i).getCodigo() == a.getCodigo()) {
-                animes.set(i, a);
-                break;
-            }
+    public void salvar(Anime anime) {
+        try {
+            animeDAO.salvar(anime);
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao salvar anime.");
         }
     }
 
-    public void excluir(int codigo) {
-        for (int i = 0; i < animes.size(); i++) {
-            if (animes.get(i).getCodigo() == codigo) {
-                animes.remove(i);
-                break;
-            }
+    public ArrayList<Anime> recuperarTodos() {
+        try {
+            return animeDAO.recuperarTodos();
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao listar animes.");
+            return new ArrayList<>();
         }
     }
 
     public Anime recuperarUm(int codigo) {
-        for (int i = 0; i < animes.size(); i++) {
-            if (animes.get(i).getCodigo() == codigo) {
-                return animes.get(i);
-            }
+        try {
+            return animeDAO.recuperarUm(codigo);
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao buscar anime.");
+            return null;
         }
-        return null;
     }
 
-    public ArrayList<Anime> recuperarTodos() {
-        return animes;
+    public void editar(Anime anime) {
+        try {
+            animeDAO.editar(anime);
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao editar anime.");
+        }
+    }
+
+    public void excluir(int codigo) {
+        try {
+            animeDAO.excluir(codigo);
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao excluir anime.");
+        }
     }
 }

@@ -18,37 +18,50 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class TelaAnime extends javax.swing.JFrame {
 
-    private ControlaAnime ca = new ControlaAnime();
+    private final ControlaAnime controladorAnime = new ControlaAnime();
     int codigo = 0;
 
     public TelaAnime() {
         initComponents();
+        setLocationRelativeTo(null);
+        spnAno.setValue(2000);
         montaTabela();
     }
 
     private void montaTabela() {
-        ArrayList<Anime> itens = ca.recuperarTodos();
+        ArrayList<Anime> animes = controladorAnime.recuperarTodos();
 
-        String[] colunas = {"ID", "Título", "Gênero", "Estudio", "Ano", "Tem Mangá", "Tem Dublagem"};
+        String[] colunas = {
+            "ID", "Título", "Gênero", "Estudio", "Ano", "Tem Mangá", "Tem Dublagem"
+        };
 
         DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
 
-        for (int i = 0; i < itens.size(); i++) {
-            Anime a = itens.get(i);
-            Object[] linha = {a.getCodigo(), a.getTitulo(), a.getGenero(), a.getEstudio(), a.getAnoLancamento(), a.isTemManga(), a.isDublado()};
+        for (int i = 0; i < animes.size(); i++) {
+            Anime anime = animes.get(i);
+
+            Object[] linha = {
+                anime.getCodigo(),
+                anime.getTitulo(),
+                anime.getGenero(),
+                anime.getEstudio(),
+                anime.getAnoLancamento(),
+                anime.isTemManga(),
+                anime.isDublado()
+            };
+
             modelo.addRow(linha);
         }
 
         tblItens.setModel(modelo);
 
-        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer(); // código para centralizar as respostas na table
-        centralizado.setHorizontalAlignment(SwingConstants.CENTER); //precisou de 2 import
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
 
         for (int i = 0; i < tblItens.getColumnCount(); i++) {
             tblItens.getColumnModel().getColumn(i).setCellRenderer(centralizado);
         }
 
-        // opcional
         tblItens.getColumnModel().getColumn(0).setMinWidth(15);
         tblItens.getColumnModel().getColumn(0).setPreferredWidth(30);
         tblItens.getColumnModel().getColumn(0).setMaxWidth(30);
@@ -264,22 +277,23 @@ public class TelaAnime extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Anime a = new Anime(
+        Anime anime = new Anime(
                 txtTitulo.getText(),
                 txtGenero.getText(),
                 txtEstudio.getText(),
-                (int) spnAno.getValue(),
                 cbTemManga.getSelectedItem().toString().equals("Sim"),
-                cbDublado.getSelectedItem().toString().equals("Sim")
+                cbDublado.getSelectedItem().toString().equals("Sim"),
+                (int) spnAno.getValue()
         );
 
         if (codigo == 0) {
-            ca.salvar(a);
+            controladorAnime.salvar(anime);
         } else {
-            a.setCodigo(codigo);
-            ca.editar(a);
+            anime.setCodigo(codigo);
+            controladorAnime.editar(anime);
             codigo = 0;
         }
+
         btnSalvar.setText("Salvar");
         montaTabela();
 
@@ -287,25 +301,30 @@ public class TelaAnime extends javax.swing.JFrame {
         txtGenero.setText("");
         txtEstudio.setText("");
         spnAno.setValue(0);
+        cbTemManga.setSelectedItem("Sim");
+        cbDublado.setSelectedItem("Sim");
 
         txtTitulo.requestFocus();
-
-
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        String idString = String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0)); //quando selecionar a linha com o mouse
+        String idString = String.valueOf(
+                tblItens.getValueAt(tblItens.getSelectedRow(), 0)
+        );
+
         int id = Integer.parseInt(idString);
 
-        Anime a = ca.recuperarUm(id);
-        if (a != null) {
-            codigo = a.getCodigo();
-            txtTitulo.setText(a.getTitulo());
-            txtGenero.setText(a.getGenero());
-            txtEstudio.setText(a.getEstudio());
-            spnAno.setValue(a.getAnoLancamento());
-            cbTemManga.setSelectedItem(a.isTemManga() ? "Sim" : "Não");
-            cbDublado.setSelectedItem(a.isDublado() ? "Sim" : "Não");
+        Anime anime = controladorAnime.recuperarUm(id);
+
+        if (anime != null) {
+            codigo = anime.getCodigo();
+
+            txtTitulo.setText(anime.getTitulo());
+            txtGenero.setText(anime.getGenero());
+            txtEstudio.setText(anime.getEstudio());
+            spnAno.setValue(anime.getAnoLancamento());
+            cbTemManga.setSelectedItem(anime.isTemManga() ? "Sim" : "Não");
+            cbDublado.setSelectedItem(anime.isDublado() ? "Sim" : "Não");
 
             btnSalvar.setText("Atualizar");
         }
@@ -313,16 +332,20 @@ public class TelaAnime extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int confirmacao = Mensagem.confirmacao("Deseja realmente excluir?");
+
         if (confirmacao == 0) {
-            int codigo = Integer.parseInt(String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0))); //pega o codigo da coluna 0, com o codigo
-            ca.excluir(codigo); //que queremos, selecionando com o mouse, transforma String em int. e usamos o codigo selecionado para o resto.
+            int codigo = Integer.parseInt(
+                    String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0))
+            );
+
+            controladorAnime.excluir(codigo);
             montaTabela();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        TelaMenu tm = new TelaMenu();
-        tm.setVisible(true);
+        TelaMenu telaMenu = new TelaMenu();
+        telaMenu.setVisible(true);
         this.dispose(); // fecha o menu atual
     }//GEN-LAST:event_btnVoltarActionPerformed
 

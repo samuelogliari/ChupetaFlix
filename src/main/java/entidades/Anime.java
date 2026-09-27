@@ -14,7 +14,7 @@ public class Anime extends Midia {
     private boolean temManga;
     private boolean dublado;
 
-    public Anime(String titulo, String genero, String estudio, int anoLancamento, boolean temManga, boolean dublado) {
+    public Anime(String titulo, String genero, String estudio, boolean temManga, boolean dublado, int anoLancamento) {
         super(titulo, genero, anoLancamento);
         this.estudio = estudio;
         this.temManga = temManga;
@@ -45,9 +45,8 @@ public class Anime extends Midia {
         this.dublado = dublado;
     }
 
-    @Override //Sobrescreve no Midia
+    @Override
     public String getTipo() {
         return "Anime";
     }
-
 }

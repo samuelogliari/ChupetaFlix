@@ -4,6 +4,7 @@
  */
 package banco;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,10 +14,16 @@ import java.sql.SQLException;
  * @author SAUDE
  */
 public class Conexao {
+
+    private static final Dotenv dotenv = Dotenv.configure()
+            .filename("chupetaflix.env")
+            .load();
+
     private static final String URL = "jdbc:postgresql://localhost:5432/chupetaflix";
-    private static final String USUARIO = "postgres";
-    private static final String SENHA = "postgres";
-    
+    private static final String USUARIO = dotenv.get("POSTGRES_USER");
+    private static final String SENHA = dotenv.get("POSTGRES_PASSWORD");
+
     public static Connection conectar() throws SQLException {
-        return DriverManager.getConnection(URL, USUARIO, SENHA);}
+        return DriverManager.getConnection(URL, USUARIO, SENHA);
+    }
 }

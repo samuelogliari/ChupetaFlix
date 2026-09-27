@@ -15,6 +15,7 @@ public class TelaMenu extends javax.swing.JFrame {
      */
     public TelaMenu() {
         initComponents();
+        setLocationRelativeTo(null);
         getContentPane().setBackground(new java.awt.Color(32, 32, 32)); //conserta bug design aparecendo branco
     }
 

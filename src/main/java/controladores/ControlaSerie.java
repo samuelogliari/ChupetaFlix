@@ -4,7 +4,10 @@
  */
 package controladores;
 
+import apoio.Mensagem;
+import dao.SerieDAO;
 import entidades.Serie;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -13,43 +16,47 @@ import java.util.ArrayList;
  */
 public class ControlaSerie {
 
-    private static ArrayList<Serie> series = new ArrayList(); // Static para manter infos
-    private static int codigo = 1;
+    private final SerieDAO serieDAO = new SerieDAO();
 
-    public void salvar(Serie s) {
-        s.setCodigo(codigo);
-        series.add(s);
-        codigo++;
-    }
-
-    public void editar(Serie s) {
-        for (int i = 0; i < series.size(); i++) {
-            if (series.get(i).getCodigo() == s.getCodigo()) { // procura a série que possui o mesmo código
-                series.set(i, s);
-                break;
-            }
+    public void salvar(Serie serie) {
+        try {
+            serieDAO.salvar(serie);
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao salvar série.");
         }
     }
 
-    public void excluir(int codigo) {
-        for (int i = 0; i < series.size(); i++) {
-            if (series.get(i).getCodigo() == codigo) {
-                series.remove(i);
-                break;
-            }
+    public ArrayList<Serie> recuperarTodos() {
+        try {
+            return serieDAO.recuperarTodos();
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao listar séries.");
+            return new ArrayList<>();
         }
     }
 
     public Serie recuperarUm(int codigo) {
-        for (int i = 0; i < series.size(); i++) {
-            if (series.get(i).getCodigo() == codigo) {
-                return series.get(i);
-            }
+        try {
+            return serieDAO.recuperarUm(codigo);
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao buscar série.");
+            return null;
         }
-        return null;
     }
 
-    public ArrayList<Serie> recuperarTodos() {
-        return series;
+    public void editar(Serie serie) {
+        try {
+            serieDAO.editar(serie);
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao editar série.");
+        }
+    }
+
+    public void excluir(int codigo) {
+        try {
+            serieDAO.excluir(codigo);
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao excluir série.");
+        }
     }
 }

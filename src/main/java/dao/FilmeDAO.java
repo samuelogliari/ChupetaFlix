@@ -44,86 +44,51 @@ public class FilmeDAO {
 
         String sql = SQL_SALVAR;
 
-        Connection conexao = Conexao.conectar();
+        try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
 
-        PreparedStatement comando = conexao.prepareStatement(sql);
+            comando.setString(1, filme.getTitulo());
+            comando.setString(2, filme.getGenero());
+            comando.setInt(3, filme.getAnoLancamento());
+            comando.setString(4, filme.getDiretor());
+            comando.setInt(5, filme.getDuracao());
+            comando.setString(6, filme.getClassificacao());
 
-        comando.setString(1, filme.getTitulo());
-        comando.setString(2, filme.getGenero());
-        comando.setInt(3, filme.getAnoLancamento());
-        comando.setString(4, filme.getDiretor());
-        comando.setInt(5, filme.getDuracao());
-        comando.setString(6, filme.getClassificacao());
-
-        comando.executeUpdate();
-
-        comando.close();
-        conexao.close();
-
+            comando.executeUpdate();
+        }
     }
 
     public ArrayList<Filme> recuperarTodos() throws SQLException {
 
         String sql = SQL_RECUPERAR_TODOS;
 
-        Connection conexao = Conexao.conectar();
-        PreparedStatement comando = conexao.prepareStatement(sql);
-        ResultSet resultado = comando.executeQuery();
+        try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql); ResultSet resultado = comando.executeQuery()) {
 
-        ArrayList<Filme> filmes = new ArrayList<>();
-        while (resultado.next()) {
+            ArrayList<Filme> filmes = new ArrayList<>();
+            while (resultado.next()) {
 
-            Filme filme = new Filme(
-                    resultado.getString("titulo"),
-                    resultado.getString("genero"),
-                    resultado.getString("diretor"),
-                    resultado.getInt("duracao"),
-                    resultado.getString("classificacao"),
-                    resultado.getInt("ano_lancamento")
-            );
-            filme.setCodigo(resultado.getInt("id"));
-            filmes.add(filme);
+               Filme filme = mapearFilme(resultado);
+               filmes.add(filme);
+            }
+
+            return filmes;
         }
-
-        resultado.close();
-        comando.close();
-        conexao.close();
-
-        return filmes;
     }
 
     public Filme recuperarUm(int codigo) throws SQLException {
         String sql = SQL_RECUPERAR_UM;
 
-        Connection conexao = Conexao.conectar();
-        PreparedStatement comando = conexao.prepareStatement(sql);
+        try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
 
-        comando.setInt(1, codigo);
+            comando.setInt(1, codigo);
 
-        ResultSet resultado = comando.executeQuery();
+            try (ResultSet resultado = comando.executeQuery()) {
 
-        if (resultado.next()) {
-            Filme filme = new Filme(
-                    resultado.getString("titulo"),
-                    resultado.getString("genero"),
-                    resultado.getString("diretor"),
-                    resultado.getInt("duracao"),
-                    resultado.getString("classificacao"),
-                    resultado.getInt("ano_lancamento")
-            );
-
-            filme.setCodigo(resultado.getInt("id"));
-
-            resultado.close();
-            comando.close();
-            conexao.close();
-
-            return filme;
+                if (resultado.next()) {
+          Filme filme = mapearFilme(resultado);
+          return filme;
+                }
+            }
         }
-        resultado.close();
-        comando.close();
-        conexao.close();
-
         return null;
     }
 
@@ -131,31 +96,42 @@ public class FilmeDAO {
 
         String sql = SQL_EDITAR;
 
-        Connection conexao = Conexao.conectar();
-        PreparedStatement comando = conexao.prepareStatement(sql);
+        try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
 
-        comando.setString(1, filme.getTitulo());
-        comando.setString(2, filme.getGenero());
-        comando.setInt(3, filme.getAnoLancamento());
-        comando.setString(4, filme.getDiretor());
-        comando.setInt(5, filme.getDuracao());
-        comando.setString(6, filme.getClassificacao());
-        comando.setInt(7, filme.getCodigo());
+            comando.setString(1, filme.getTitulo());
+            comando.setString(2, filme.getGenero());
+            comando.setInt(3, filme.getAnoLancamento());
+            comando.setString(4, filme.getDiretor());
+            comando.setInt(5, filme.getDuracao());
+            comando.setString(6, filme.getClassificacao());
+            comando.setInt(7, filme.getCodigo());
 
-        comando.executeUpdate();
+            comando.executeUpdate();
 
-        comando.close();
-        conexao.close();
+        }
     }
 
     public void excluir(int codigo) throws SQLException {
         String sql = SQL_EXCLUIR;
 
-        Connection conexao = Conexao.conectar();
-        PreparedStatement comando = conexao.prepareStatement(sql);
-        comando.setInt(1, codigo);
-        comando.executeUpdate();
-        comando.close();
-        conexao.close();
+        try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
+
+            comando.setInt(1, codigo);
+            comando.executeUpdate();
+        }
+    }
+
+    private Filme mapearFilme(ResultSet resultado) throws SQLException {
+        Filme filme = new Filme(
+                resultado.getString("titulo"),
+                resultado.getString("genero"),
+                resultado.getString("diretor"),
+                resultado.getInt("duracao"),
+                resultado.getString("classificacao"),
+                resultado.getInt("ano_lancamento")
+        );
+        filme.setCodigo(resultado.getInt("id"));
+
+        return filme;
     }
 }

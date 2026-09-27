@@ -18,24 +18,26 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class TelaSerie extends javax.swing.JFrame {
 
-    private ControlaSerie cs = new ControlaSerie();
+    private final ControlaSerie controladorSerie = new ControlaSerie();
     int codigo = 0;
 
     public TelaSerie() {
         initComponents();
+        setLocationRelativeTo(null);
+        spnAno.setValue(2000);
         montaTabela();
     }
 
     private void montaTabela() {
-        ArrayList<Serie> itens = cs.recuperarTodos();
+        ArrayList<Serie> series = controladorSerie.recuperarTodos();
 
         String[] colunas = {"ID", "Título", "Gênero", "Produtora", "Temporadas", "Episódios", "Ano"};
 
         DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
 
-        for (int i = 0; i < itens.size(); i++) {
-            Serie s = itens.get(i);
-            Object[] linha = {s.getCodigo(), s.getTitulo(), s.getGenero(), s.getProdutora(), s.getTemporadas(), s.getEpisodios(), s.getAnoLancamento()};
+        for (int i = 0; i < series.size(); i++) {
+            Serie serie = series.get(i);
+            Object[] linha = {serie.getCodigo(), serie.getTitulo(), serie.getGenero(), serie.getProdutora(), serie.getTemporadas(), serie.getEpisodios(), serie.getAnoLancamento()};
             modelo.addRow(linha);
         }
 
@@ -176,40 +178,38 @@ public class TelaSerie extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtProdutora, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnSalvar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(btnExcluir)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnVoltar)
-                                                .addGap(24, 24, 24))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(btnEditar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(43, 43, 43))))
-                                    .addComponent(txtGenero)
-                                    .addComponent(txtTitulo)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(spnAno, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 256, Short.MAX_VALUE))))
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(spnEpisodio, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE))
+                                        .addComponent(btnSalvar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnExcluir)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
+                                        .addComponent(btnVoltar)
+                                        .addGap(24, 24, 24))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnEditar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43))))
+                            .addComponent(txtGenero)
+                            .addComponent(txtTitulo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(spnAno, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(spnEpisodio, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtProdutora))
+                        .addGap(7, 7, 7))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(spnTemporada, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -261,20 +261,20 @@ public class TelaSerie extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Serie s = new Serie(
+        Serie serie = new Serie(
                 txtTitulo.getText(),
                 txtGenero.getText(),
-                txtProdutora.getText(),
                 (int) spnTemporada.getValue(),
                 (int) spnEpisodio.getValue(),
+                txtProdutora.getText(),
                 (int) spnAno.getValue()
         );
 
         if (codigo == 0) {
-            cs.salvar(s);
+            controladorSerie.salvar(serie);
         } else {
-            s.setCodigo(codigo);
-            cs.editar(s);
+            serie.setCodigo(codigo);
+            controladorSerie.editar(serie);
             codigo = 0;
         }
         btnSalvar.setText("Salvar");
@@ -296,15 +296,15 @@ public class TelaSerie extends javax.swing.JFrame {
         String idString = String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0)); //quando selecionar a linha com o mouse
         int id = Integer.parseInt(idString);
 
-        Serie s = cs.recuperarUm(id);
-        if (s != null) {
-            codigo = s.getCodigo();
-            txtTitulo.setText(s.getTitulo());
-            txtGenero.setText(s.getGenero());
-            txtProdutora.setText(s.getProdutora());
-            spnTemporada.setValue(s.getTemporadas());
-            spnEpisodio.setValue(s.getEpisodios());
-            spnAno.setValue(s.getAnoLancamento());
+        Serie serie = controladorSerie.recuperarUm(id);
+        if (serie != null) {
+            codigo = serie.getCodigo();
+            txtTitulo.setText(serie.getTitulo());
+            txtGenero.setText(serie.getGenero());
+            txtProdutora.setText(serie.getProdutora());
+            spnTemporada.setValue(serie.getTemporadas());
+            spnEpisodio.setValue(serie.getEpisodios());
+            spnAno.setValue(serie.getAnoLancamento());
 
             btnSalvar.setText("Atualizar");
         }
@@ -319,14 +319,14 @@ public class TelaSerie extends javax.swing.JFrame {
         int confirmacao = Mensagem.confirmacao("Deseja realmente excluir?");
         if (confirmacao == 0) {
             int codigo = Integer.parseInt(String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0))); //pega o codigo da coluna 0, com o codigo
-            cs .excluir(codigo); //que queremos, selecionando com o mouse, transforma String em int. e usamos o codigo selecionado para o resto
+            controladorSerie.excluir(codigo); //que queremos, selecionando com o mouse, transforma String em int. e usamos o codigo selecionado para o resto
             montaTabela();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        TelaMenu tm = new TelaMenu();
-        tm.setVisible(true);
+        TelaMenu telaMenu = new TelaMenu();
+        telaMenu.setVisible(true);
         this.dispose(); // fecha o menu atual
     }//GEN-LAST:event_btnVoltarActionPerformed
 

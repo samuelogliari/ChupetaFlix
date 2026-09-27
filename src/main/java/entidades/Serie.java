@@ -14,7 +14,7 @@ public class Serie extends Midia {
     private int episodios;
     private String produtora;
 
-    public Serie(String titulo, String genero, String produtora, int temporadas, int episodios, int anoLancamento) {
+    public Serie(String titulo, String genero, int temporadas, int episodios, String produtora, int anoLancamento) {
         super(titulo, genero, anoLancamento);
         this.temporadas = temporadas;
         this.episodios = episodios;
@@ -44,12 +44,11 @@ public class Serie extends Midia {
     public void setProdutora(String produtora) {
         this.produtora = produtora;
     }
-    
-    
+
     
     
     @Override
     public String getTipo() {
-        return "Serie";
+        return "Série";
     }
 }
