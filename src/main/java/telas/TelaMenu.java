@@ -28,11 +28,23 @@ public class TelaMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnFilme1 = new javax.swing.JButton();
         btnAnime = new javax.swing.JButton();
-        btnFilme = new javax.swing.JButton();
-        btnSerie = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
+        btnElenco = new javax.swing.JButton();
         Imagem = new javax.swing.JLabel();
         ChupetaFlix = new javax.swing.JLabel();
+        btnSerie1 = new javax.swing.JButton();
+        btnFilme2 = new javax.swing.JButton();
+
+        btnFilme1.setBackground(new java.awt.Color(51, 0, 0));
+        btnFilme1.setForeground(new java.awt.Color(255, 255, 255));
+        btnFilme1.setText("Filmes");
+        btnFilme1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilme1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,21 +57,22 @@ public class TelaMenu extends javax.swing.JFrame {
             }
         });
 
-        btnFilme.setBackground(new java.awt.Color(51, 0, 0));
-        btnFilme.setForeground(new java.awt.Color(255, 255, 255));
-        btnFilme.setText("Filmes");
-        btnFilme.addActionListener(new java.awt.event.ActionListener() {
+        btnSair.setBackground(new java.awt.Color(150, 0, 0));
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setText("Sair");
+        btnSair.setToolTipText("");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFilmeActionPerformed(evt);
+                btnSairActionPerformed(evt);
             }
         });
 
-        btnSerie.setBackground(new java.awt.Color(0, 0, 0));
-        btnSerie.setForeground(new java.awt.Color(255, 255, 255));
-        btnSerie.setText("Séries");
-        btnSerie.addActionListener(new java.awt.event.ActionListener() {
+        btnElenco.setBackground(new java.awt.Color(0, 0, 0));
+        btnElenco.setForeground(new java.awt.Color(255, 255, 255));
+        btnElenco.setText("Elenco");
+        btnElenco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSerieActionPerformed(evt);
+                btnElencoActionPerformed(evt);
             }
         });
 
@@ -70,6 +83,24 @@ public class TelaMenu extends javax.swing.JFrame {
         ChupetaFlix.setForeground(new java.awt.Color(255, 255, 255));
         ChupetaFlix.setText("CHUPETAFLIX");
 
+        btnSerie1.setBackground(new java.awt.Color(0, 0, 0));
+        btnSerie1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSerie1.setText("Séries");
+        btnSerie1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSerie1ActionPerformed(evt);
+            }
+        });
+
+        btnFilme2.setBackground(new java.awt.Color(51, 0, 0));
+        btnFilme2.setForeground(new java.awt.Color(255, 255, 255));
+        btnFilme2.setText("Filmes");
+        btnFilme2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilme2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,55 +110,81 @@ public class TelaMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSerie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(btnElenco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                             .addComponent(btnAnime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnFilme, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnSerie1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(btnFilme2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(63, 63, 63))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(ChupetaFlix)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(Imagem)
-                .addGap(56, 56, 56))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Imagem)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnSair)
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Imagem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSair)
+                        .addGap(0, 22, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ChupetaFlix, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addComponent(btnFilme2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSerie1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAnime, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))
-                    .addComponent(Imagem))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnElenco, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnimeActionPerformed
-        TelaAnime ta = new TelaAnime();
-        ta.setVisible(true);
+        TelaAnime telaAnime = new TelaAnime();
+        telaAnime.setVisible(true);
         this.dispose(); // fecha o menu atual
     }//GEN-LAST:event_btnAnimeActionPerformed
 
-    private void btnFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilmeActionPerformed
-        TelaFilme tf = new TelaFilme();
-        tf.setVisible(true);
-        this.dispose(); // fecha o menu atual
-    }//GEN-LAST:event_btnFilmeActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
 
-    private void btnSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSerieActionPerformed
-        TelaSerie ts = new TelaSerie();
-        ts.setVisible(true);
         this.dispose(); // fecha o menu atual
-    }//GEN-LAST:event_btnSerieActionPerformed
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnElencoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElencoActionPerformed
+        TelaElenco telaElenco = new TelaElenco();
+        telaElenco.setVisible(true);
+        this.dispose(); // fecha o menu atual
+    }//GEN-LAST:event_btnElencoActionPerformed
+
+    private void btnSerie1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSerie1ActionPerformed
+       TelaSerie telaSerie = new TelaSerie();
+       telaSerie.setVisible(true);
+       this.dispose(); //fecha o menu at..
+    }//GEN-LAST:event_btnSerie1ActionPerformed
+
+    private void btnFilme1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilme1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFilme1ActionPerformed
+
+    private void btnFilme2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilme2ActionPerformed
+        TelaFilme telaFilme = new TelaFilme();
+        telaFilme.setVisible(true);
+        this.dispose(); // fecha o menu atual
+    }//GEN-LAST:event_btnFilme2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,7 +225,10 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel ChupetaFlix;
     private javax.swing.JLabel Imagem;
     private javax.swing.JButton btnAnime;
-    private javax.swing.JButton btnFilme;
-    private javax.swing.JButton btnSerie;
+    private javax.swing.JButton btnElenco;
+    private javax.swing.JButton btnFilme1;
+    private javax.swing.JButton btnFilme2;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSerie1;
     // End of variables declaration//GEN-END:variables
 }

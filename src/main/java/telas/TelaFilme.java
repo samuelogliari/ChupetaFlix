@@ -65,9 +65,9 @@ public class TelaFilme extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        JLtitulo = new javax.swing.JLabel();
+        JLgenero = new javax.swing.JLabel();
+        JLanoLancamento = new javax.swing.JLabel();
         spnAno = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblItens = new javax.swing.JTable();
@@ -78,27 +78,42 @@ public class TelaFilme extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        JLdiretor = new javax.swing.JLabel();
         txtDiretor = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        JLduracao = new javax.swing.JLabel();
         txtDuracao = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        JLclassificacao = new javax.swing.JLabel();
         txtClassificacao = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Título:");
+        JLtitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JLtitulo.setForeground(new java.awt.Color(255, 255, 255));
+        JLtitulo.setText("Título:");
+        JLtitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLtituloMouseClicked(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Gênero:");
+        JLgenero.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JLgenero.setForeground(new java.awt.Color(255, 255, 255));
+        JLgenero.setText("Gênero:");
+        JLgenero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLgeneroMouseClicked(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Ano do Lançamento:");
+        JLanoLancamento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JLanoLancamento.setForeground(new java.awt.Color(255, 255, 255));
+        JLanoLancamento.setText("Ano do Lançamento:");
+        JLanoLancamento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLanoLancamentoMouseClicked(evt);
+            }
+        });
 
         tblItens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,14 +179,29 @@ public class TelaFilme extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Diretor:");
+        JLdiretor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JLdiretor.setText("Diretor:");
+        JLdiretor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLdiretorMouseClicked(evt);
+            }
+        });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Duração:");
+        JLduracao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JLduracao.setText("Duração:");
+        JLduracao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLduracaoMouseClicked(evt);
+            }
+        });
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setText("Classificação:");
+        JLclassificacao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JLclassificacao.setText("Classificação:");
+        JLclassificacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLclassificacaoMouseClicked(evt);
+            }
+        });
 
         txtClassificacao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -195,18 +225,18 @@ public class TelaFilme extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnVoltar)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
+                            .addComponent(JLclassificacao)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtClassificacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
                                 .addComponent(txtDuracao, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtDiretor, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtGenero, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(JLdiretor, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(JLduracao, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(JLtitulo, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(JLgenero, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtTitulo, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel3)
+                            .addComponent(JLanoLancamento)
                             .addComponent(spnAno, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,27 +246,27 @@ public class TelaFilme extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(JLtitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(JLgenero)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(JLdiretor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(JLduracao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(JLclassificacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(JLanoLancamento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spnAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
@@ -336,6 +366,30 @@ public class TelaFilme extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTituloActionPerformed
 
+    private void JLtituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLtituloMouseClicked
+       txtTitulo.requestFocus();
+    }//GEN-LAST:event_JLtituloMouseClicked
+
+    private void JLgeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLgeneroMouseClicked
+      txtGenero.requestFocus();
+    }//GEN-LAST:event_JLgeneroMouseClicked
+
+    private void JLdiretorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLdiretorMouseClicked
+       txtDiretor.requestFocus();
+    }//GEN-LAST:event_JLdiretorMouseClicked
+
+    private void JLduracaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLduracaoMouseClicked
+      txtDuracao.requestFocus();
+    }//GEN-LAST:event_JLduracaoMouseClicked
+
+    private void JLclassificacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLclassificacaoMouseClicked
+      txtClassificacao.requestFocus();
+    }//GEN-LAST:event_JLclassificacaoMouseClicked
+
+    private void JLanoLancamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLanoLancamentoMouseClicked
+      spnAno.requestFocus();
+    }//GEN-LAST:event_JLanoLancamentoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -375,17 +429,17 @@ public class TelaFilme extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLanoLancamento;
+    private javax.swing.JLabel JLclassificacao;
+    private javax.swing.JLabel JLdiretor;
+    private javax.swing.JLabel JLduracao;
+    private javax.swing.JLabel JLgenero;
+    private javax.swing.JLabel JLtitulo;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner spnAno;
     private javax.swing.JTable tblItens;

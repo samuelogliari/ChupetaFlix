@@ -4,19 +4,60 @@
  */
 package telas;
 
+import apoio.Mensagem;
+import controladores.ControlaElenco;
+import entidades.Elenco;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
- * @author SAUDE
+ * @author samuel.ogliari
  */
 public class TelaElenco extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaElenco.class.getName());
 
-    /**
-     * Creates new form TelaElenco
-     */
+    private final ControlaElenco controladorElenco = new ControlaElenco();
+    int codigoElenco = 0;
+
     public TelaElenco() {
         initComponents();
+        setLocationRelativeTo(null);
+        montaTabela();
+    }
+
+    private void montaTabela() {
+        ArrayList<Elenco> integrantes = controladorElenco.recuperarTodos();
+
+        String[] colunas = {"ID", "Nome", "Nacionalidade", "Data Nascimento"
+        };
+
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+
+        for (int i = 0; i < integrantes.size(); i++) {
+            Elenco integrante = integrantes.get(i);
+            Object[] linha = {integrante.getCodigo(), integrante.getNome(), integrante.getNacionalidade(), integrante.getDtNascimento()
+            };
+            modelo.addRow(linha);
+        }
+
+        tblItens.setModel(modelo);
+
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer(); // código para centralizar as respostas na table
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER); //precisou de 2 import
+
+        for (int i = 0; i < tblItens.getColumnCount(); i++) {
+            tblItens.getColumnModel().getColumn(i).setCellRenderer(centralizado);
+        }
+
+        // opcional
+        tblItens.getColumnModel().getColumn(0).setMinWidth(15);
+        tblItens.getColumnModel().getColumn(0).setPreferredWidth(30);
+        tblItens.getColumnModel().getColumn(0).setMaxWidth(30);
     }
 
     /**
@@ -28,21 +69,280 @@ public class TelaElenco extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JLnome = new javax.swing.JLabel();
+        JLnacionalidade = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblItens = new javax.swing.JTable();
+        txtNacionalidade = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        btnSalvar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnListar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        JLdtNascimento = new javax.swing.JLabel();
+        txtDtNascimento = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 51, 51));
+
+        JLnome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JLnome.setForeground(new java.awt.Color(255, 255, 255));
+        JLnome.setText("Nome:");
+        JLnome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLnomeMouseClicked(evt);
+            }
+        });
+
+        JLnacionalidade.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JLnacionalidade.setForeground(new java.awt.Color(255, 255, 255));
+        JLnacionalidade.setText("Nacionalidade:");
+        JLnacionalidade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLnacionalidadeMouseClicked(evt);
+            }
+        });
+
+        tblItens.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblItens);
+
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+
+        btnSalvar.setBackground(new java.awt.Color(153, 153, 153));
+        btnSalvar.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEditar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setBackground(new java.awt.Color(255, 0, 51));
+        btnExcluir.setForeground(new java.awt.Color(0, 0, 0));
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        btnListar.setBackground(new java.awt.Color(204, 204, 204));
+        btnListar.setForeground(new java.awt.Color(0, 0, 0));
+        btnListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Reload_1.png"))); // NOI18N
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
+
+        btnVoltar.setBackground(new java.awt.Color(204, 255, 204));
+        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
+        JLdtNascimento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JLdtNascimento.setText("Data Nascimento:");
+        JLdtNascimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLdtNascimentoMouseClicked(evt);
+            }
+        });
+
+        txtDtNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDtNascimentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnExcluir)
+                            .addComponent(btnSalvar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEditar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                                .addComponent(btnListar)
+                                .addGap(11, 11, 11))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnVoltar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtDtNascimento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                            .addComponent(txtNacionalidade, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JLdtNascimento, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JLnome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JLnacionalidade, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JLnome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JLnacionalidade)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JLdtNascimento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnVoltar))
+                .addGap(24, 24, 24))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        Elenco elenco = criarElenco();
+
+        if (elenco == null) {
+            return;
+        }
+        if (codigoElenco == 0) {
+            controladorElenco.salvar(elenco);
+        } else {
+            elenco.setCodigo(codigoElenco);
+            controladorElenco.editar(elenco);
+            codigoElenco = 0;
+        }
+        btnSalvar.setText("Salvar");
+        montaTabela();
+        limpaCampos();
+
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private Elenco criarElenco() {
+        try {
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate dtNascimento = LocalDate.parse(txtDtNascimento.getText(), formato);
+
+            return new Elenco(
+                    txtNome.getText(),
+                    txtNacionalidade.getText(),
+                    dtNascimento
+            );
+        } catch (DateTimeParseException ex) {
+            Mensagem.erro("Informe a data de nascimento no formato dd/MM/yyyy");
+            return null;
+        }
+    }
+
+    private void limpaCampos() {
+        txtNome.setText("");
+        txtNacionalidade.setText("");
+        txtDtNascimento.setText("");
+
+        txtNome.requestFocus();
+    }
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String idString = String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0)); //quando selecionar a linha com o mouse
+        int id = Integer.parseInt(idString);
+
+        Elenco elenco = controladorElenco.recuperarUm(id);
+        if (elenco != null) {
+            codigoElenco = elenco.getCodigo();
+            txtNome.setText(elenco.getNome());
+            txtNacionalidade.setText(elenco.getNacionalidade());
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            txtDtNascimento.setText(elenco.getDtNascimento().format(formato));
+
+            btnSalvar.setText("Atualizar");
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        montaTabela();
+
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int confirmacao = Mensagem.confirmacao("Deseja realmente excluir?");
+        if (confirmacao == 0) {
+            int codigo = Integer.parseInt(String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0))); //pega o codigo da coluna 0, com o codigo
+            controladorElenco.excluir(codigo); //que queremos, selecionando com o mouse, transforma String em int. e usamos o codigo selecionado para o resto
+            montaTabela();
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        TelaMenu telaMenu = new TelaMenu();
+        telaMenu.setVisible(true);
+        this.dispose(); // fecha o menu atual
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code her
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtDtNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDtNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDtNascimentoActionPerformed
+
+    private void JLnomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLnomeMouseClicked
+        txtNome.requestFocus();
+    }//GEN-LAST:event_JLnomeMouseClicked
+
+    private void JLnacionalidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLnacionalidadeMouseClicked
+        txtNacionalidade.requestFocus();
+    }//GEN-LAST:event_JLnacionalidadeMouseClicked
+
+    private void JLdtNascimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLdtNascimentoMouseClicked
+        txtDtNascimento.requestFocus();
+    }//GEN-LAST:event_JLdtNascimentoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -60,15 +360,45 @@ public class TelaElenco extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TelaElenco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaElenco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaElenco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaElenco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TelaElenco().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaElenco().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLdtNascimento;
+    private javax.swing.JLabel JLnacionalidade;
+    private javax.swing.JLabel JLnome;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblItens;
+    private javax.swing.JTextField txtDtNascimento;
+    private javax.swing.JTextField txtNacionalidade;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
