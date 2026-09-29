@@ -84,6 +84,7 @@ public class TelaSerie extends javax.swing.JFrame {
         txtProdutora = new javax.swing.JTextField();
         spnTemporada = new javax.swing.JSpinner();
         spnEpisodio = new javax.swing.JSpinner();
+        btnGerenciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -199,6 +200,15 @@ public class TelaSerie extends javax.swing.JFrame {
 
         txtProdutora.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        btnGerenciar.setBackground(new java.awt.Color(102, 0, 102));
+        btnGerenciar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGerenciar.setText("Gerenciar Elenco");
+        btnGerenciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerenciarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,10 +223,12 @@ public class TelaSerie extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnSalvar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 343, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(btnExcluir)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
+                                        .addGap(55, 55, 55)
+                                        .addComponent(btnGerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnVoltar)
                                         .addGap(24, 24, 24))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -282,7 +294,8 @@ public class TelaSerie extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnGerenciar))
                 .addGap(24, 24, 24))
             .addComponent(jScrollPane1)
         );
@@ -384,6 +397,12 @@ public class TelaSerie extends javax.swing.JFrame {
          spnAno.requestFocus();
     }//GEN-LAST:event_JLanoLancamentoMouseClicked
 
+    private void btnGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarActionPerformed
+         TelaSerieElenco telaSerieElenco = new TelaSerieElenco();
+        telaSerieElenco.setVisible(true);
+        this.dispose(); // fecha o menu atual
+    }//GEN-LAST:event_btnGerenciarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -435,6 +454,7 @@ public class TelaSerie extends javax.swing.JFrame {
     private javax.swing.JLabel JLtitulo;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnGerenciar;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;

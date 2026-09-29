@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
- *
+ * 
  * @author samuel.ogliari
  */
 public class TelaAnime extends javax.swing.JFrame {
@@ -95,6 +95,7 @@ public class TelaAnime extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
+        btnGerenciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -211,6 +212,15 @@ public class TelaAnime extends javax.swing.JFrame {
             }
         });
 
+        btnGerenciar.setBackground(new java.awt.Color(102, 0, 102));
+        btnGerenciar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGerenciar.setText("Gerenciar Elenco");
+        btnGerenciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerenciarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -224,23 +234,23 @@ public class TelaAnime extends javax.swing.JFrame {
                             .addComponent(txtGenero))
                         .addGap(29, 29, 29))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JLanoLancamento)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JLanoLancamento)
                                     .addComponent(spnAno, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnExcluir)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnExcluir)
+                                        .addGap(62, 62, 62)
+                                        .addComponent(btnGerenciar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(btnSalvar)
-                                    .addComponent(btnEditar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnEditar)))
                             .addComponent(JLtitulo)
                             .addComponent(JLgenero)
                             .addComponent(JLestudio)
                             .addComponent(txtEstudio, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 59, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnVoltar)
@@ -294,7 +304,8 @@ public class TelaAnime extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnGerenciar))
                 .addGap(24, 24, 24))
             .addComponent(jScrollPane1)
         );
@@ -403,6 +414,12 @@ public class TelaAnime extends javax.swing.JFrame {
        cbDublado.requestFocus();
     }//GEN-LAST:event_JLdublagemMouseClicked
 
+    private void btnGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarActionPerformed
+        TelaAnimeElenco telaAnimeElenco = new TelaAnimeElenco();
+        telaAnimeElenco.setVisible(true);
+        this.dispose(); // fecha o menu atual
+    }//GEN-LAST:event_btnGerenciarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -448,6 +465,7 @@ public class TelaAnime extends javax.swing.JFrame {
     private javax.swing.JLabel JLtitulo;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnGerenciar;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
