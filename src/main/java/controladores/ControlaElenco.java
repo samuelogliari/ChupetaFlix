@@ -44,6 +44,15 @@ public class ControlaElenco {
         }
     }
 
+    public ArrayList<Elenco> pesquisarPorNome(String nome) {
+        try {
+            return elencoDAO.pesquisarPorNome(nome);
+        } catch (SQLException ex) {
+            Mensagem.erro("Erro ao pesquisar integrante do elenco.");
+            return new ArrayList<>();
+        }
+    }
+
     public void editar(Elenco elenco) {
         try {
             elencoDAO.editar(elenco);

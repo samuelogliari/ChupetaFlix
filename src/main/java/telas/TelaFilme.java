@@ -84,6 +84,7 @@ public class TelaFilme extends javax.swing.JFrame {
         txtDuracao = new javax.swing.JTextField();
         JLclassificacao = new javax.swing.JLabel();
         txtClassificacao = new javax.swing.JTextField();
+        btnGerenciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -205,6 +206,15 @@ public class TelaFilme extends javax.swing.JFrame {
 
         txtClassificacao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        btnGerenciar.setBackground(new java.awt.Color(102, 0, 102));
+        btnGerenciar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGerenciar.setText("Gerenciar Elenco");
+        btnGerenciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerenciarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -215,29 +225,34 @@ public class TelaFilme extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnExcluir)
-                            .addComponent(btnSalvar)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
                                 .addComponent(btnListar)
-                                .addGap(11, 11, 11))))
+                                .addGap(11, 11, 11))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSalvar)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnExcluir)
+                                        .addGap(62, 62, 62)
+                                        .addComponent(btnGerenciar)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(JLclassificacao)
+                    .addComponent(JLanoLancamento)
+                    .addComponent(spnAno, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnVoltar)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JLclassificacao)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtClassificacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
-                                .addComponent(txtDuracao, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtDiretor, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtGenero, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JLdiretor, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JLduracao, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JLtitulo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JLgenero, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtTitulo, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(JLanoLancamento)
-                            .addComponent(spnAno, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtClassificacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                            .addComponent(txtDuracao, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDiretor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtGenero, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JLdiretor, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JLduracao, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JLtitulo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JLgenero, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTitulo, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -269,7 +284,7 @@ public class TelaFilme extends javax.swing.JFrame {
                 .addComponent(JLanoLancamento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spnAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(btnSalvar)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -278,7 +293,8 @@ public class TelaFilme extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnGerenciar))
                 .addGap(24, 24, 24))
             .addComponent(jScrollPane1)
         );
@@ -390,6 +406,12 @@ public class TelaFilme extends javax.swing.JFrame {
       spnAno.requestFocus();
     }//GEN-LAST:event_JLanoLancamentoMouseClicked
 
+    private void btnGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarActionPerformed
+       TelaFilmeElenco telaFilmeElenco = new TelaFilmeElenco();
+        telaFilmeElenco.setVisible(true);
+        this.dispose(); // fecha o menu atual
+    }//GEN-LAST:event_btnGerenciarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -437,6 +459,7 @@ public class TelaFilme extends javax.swing.JFrame {
     private javax.swing.JLabel JLtitulo;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnGerenciar;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;

@@ -32,33 +32,40 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="259" max="32767" attributes="0"/>
                               <Component id="btnListar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btnExcluir" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                      <Component id="btnGerenciar" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="JLclassificacao" min="-2" max="-2" attributes="0"/>
+                  <Component id="JLanoLancamento" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="spnAno" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="JLclassificacao" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtClassificacao" alignment="0" pref="395" max="32767" attributes="0"/>
-                              <Component id="txtDuracao" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtDiretor" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtGenero" alignment="0" max="32767" attributes="0"/>
-                              <Component id="JLdiretor" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="JLduracao" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="JLtitulo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="JLgenero" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTitulo" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="JLanoLancamento" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="spnAno" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtClassificacao" alignment="0" pref="395" max="32767" attributes="0"/>
+                          <Component id="txtDuracao" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtDiretor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtGenero" alignment="0" max="32767" attributes="0"/>
+                          <Component id="JLdiretor" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="JLduracao" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="JLtitulo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="JLgenero" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTitulo" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -95,7 +102,7 @@
               <Component id="JLanoLancamento" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="spnAno" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="73" max="32767" attributes="0"/>
+              <EmptySpace pref="72" max="32767" attributes="0"/>
               <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -106,6 +113,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnGerenciar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
@@ -328,6 +336,20 @@
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnGerenciar">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="0" red="66" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Gerenciar Elenco"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerenciarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -32,6 +32,11 @@ public class ElencoDAO {
             = "SELECT id, nome, nacionalidade, dt_nascimento "
             + "FROM elenco WHERE id=?";
 
+    private static final String SQL_PESQUISAR_POR_NOME
+            = "SELECT id, nome, nacionalidade, dt_nascimento "
+            + "FROM elenco "
+            + "WHERE nome ILIKE ?";
+
     private static final String SQL_EDITAR
             = "UPDATE elenco SET "
             + "nome = ?, nacionalidade = ?, dt_nascimento = ? "
@@ -83,6 +88,22 @@ public class ElencoDAO {
         return null;
     }
 
+    public ArrayList<Elenco> pesquisarPorNome(String nome) throws SQLException {
+        String sql = SQL_PESQUISAR_POR_NOME;
+        try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
+            comando.setString(1, "%" + nome + "%");
+            try (ResultSet resultado = comando.executeQuery()) {
+                ArrayList<Elenco> integrantes = new ArrayList<>();
+
+                while (resultado.next()) {
+                    Elenco elenco = mapearElenco(resultado);
+                    integrantes.add(elenco);
+                }
+                return integrantes;
+            }
+        }
+    }
+
     public void editar(Elenco elenco) throws SQLException {
         String sql = SQL_EDITAR;
         try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
@@ -113,4 +134,5 @@ public class ElencoDAO {
         elenco.setCodigo(resultado.getInt("id"));
         return elenco;
     }
+
 }
