@@ -11,6 +11,7 @@ import controladores.ControlaFilmeElenco;
 import entidades.Elenco;
 import entidades.Filme;
 import java.util.ArrayList;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -72,6 +73,12 @@ public class TelaFilmeElenco extends javax.swing.JFrame {
             modelo.addRow(linha);
         }
         tblElenco.setModel(modelo);
+        DefaultTableCellRenderer centralizador = new DefaultTableCellRenderer();
+        centralizador.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tblElenco.getColumnCount(); i++) {
+            tblElenco.getColumnModel().getColumn(i).setCellRenderer(centralizador);
+        }
     }
 
     @SuppressWarnings("unchecked")

@@ -312,7 +312,12 @@ public class TelaSerie extends javax.swing.JFrame {
                 txtProdutora.getText(),
                 (int) spnAno.getValue()
         );
+        String erro = controladorSerie.validar(serie);
 
+        if (erro != null) {
+            Mensagem.aviso(erro);
+            return;
+        }
         if (codigo == 0) {
             controladorSerie.salvar(serie);
         } else {
@@ -322,19 +327,23 @@ public class TelaSerie extends javax.swing.JFrame {
         }
         btnSalvar.setText("Salvar");
         montaTabela();
+        limpaCampos();
 
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    public void limpaCampos() {
         txtTitulo.setText("");
         txtGenero.setText("");
         txtProdutora.setText("");
         spnTemporada.setValue(0);
         spnEpisodio.setValue(0);
-        spnAno.setValue(0);
+        spnAno.setValue(2000);
 
         txtTitulo.requestFocus();
 
-
-    }//GEN-LAST:event_btnSalvarActionPerformed
-
+    }
+    
+    
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String idString = String.valueOf(tblItens.getValueAt(tblItens.getSelectedRow(), 0)); //quando selecionar a linha com o mouse
         int id = Integer.parseInt(idString);
@@ -374,11 +383,11 @@ public class TelaSerie extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void JLtituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLtituloMouseClicked
-      txtTitulo.requestFocus();
+        txtTitulo.requestFocus();
     }//GEN-LAST:event_JLtituloMouseClicked
 
     private void JLgeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLgeneroMouseClicked
-       txtGenero.requestFocus();
+        txtGenero.requestFocus();
     }//GEN-LAST:event_JLgeneroMouseClicked
 
     private void JLprodutoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLprodutoraMouseClicked
@@ -386,19 +395,19 @@ public class TelaSerie extends javax.swing.JFrame {
     }//GEN-LAST:event_JLprodutoraMouseClicked
 
     private void JLtemporadasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLtemporadasMouseClicked
-     spnTemporada.requestFocus();
+        spnTemporada.requestFocus();
     }//GEN-LAST:event_JLtemporadasMouseClicked
 
     private void JLepisodiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLepisodiosMouseClicked
-      spnEpisodio.requestFocus();
+        spnEpisodio.requestFocus();
     }//GEN-LAST:event_JLepisodiosMouseClicked
 
     private void JLanoLancamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLanoLancamentoMouseClicked
-         spnAno.requestFocus();
+        spnAno.requestFocus();
     }//GEN-LAST:event_JLanoLancamentoMouseClicked
 
     private void btnGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarActionPerformed
-         TelaSerieElenco telaSerieElenco = new TelaSerieElenco();
+        TelaSerieElenco telaSerieElenco = new TelaSerieElenco();
         telaSerieElenco.setVisible(true);
         this.dispose(); // fecha o menu atual
     }//GEN-LAST:event_btnGerenciarActionPerformed

@@ -59,4 +59,27 @@ public class ControlaSerie {
             Mensagem.erro("Erro ao excluir série.");
         }
     }
+
+    public String validar(Serie serie) {
+        if (serie.getTitulo() == null || serie.getTitulo().trim().isEmpty()) {
+            return "O título é obrigatório.";
+        }
+        if (serie.getGenero() == null || serie.getGenero().trim().isEmpty()) {
+            return "O gênero é obrigatório.";
+        }
+        if (serie.getTemporadas() <= 0) {
+            return "A quantidade de temporadas deve ser um número maior que zero.";
+        }
+        if (serie.getEpisodios() <= 0) {
+            return "A quantidade de episódios deve ser um número maior que zero.";
+        }
+        if (serie.getProdutora() == null || serie.getProdutora().trim().isEmpty()) {
+            return "A produtora é obrigatória.";
+        }
+        int anoAtual = java.time.Year.now().getValue();
+        if (serie.getAnoLancamento() < 1888 || serie.getAnoLancamento() > anoAtual) {
+            return "O ano de lançamento deve ser válido.";
+        }
+        return null;
+    }
 }

@@ -8,6 +8,7 @@ import apoio.Mensagem;
 import dao.FilmeDAO;
 import entidades.Filme;
 import java.sql.SQLException;
+import java.time.Year;
 import java.util.ArrayList;
 
 /**
@@ -59,5 +60,30 @@ public class ControlaFilme {
         } catch (SQLException ex) {
             Mensagem.erro("Erro ao excluir filme");
         }
+    }
+
+    //validações
+    public String validar(Filme filme) {
+        if (filme.getTitulo() == null || filme.getTitulo().trim().isEmpty()) {
+            return "O título é obrigatório.";
+        }
+        if (filme.getGenero() == null || filme.getGenero().trim().isEmpty()) {
+            return "O gênero é obrigatório.";
+        }
+        if (filme.getDiretor() == null || filme.getDiretor().trim().isEmpty()) {
+            return "O diretor é obrigatório.";
+        }
+        if (filme.getDuracao() <= 0) {
+            return "A duração deve ser um número maior que zero.";
+        }
+        if (filme.getClassificacao() == null || filme.getClassificacao().trim().isEmpty()) {
+            return "A classificação é obrigatória.";
+        }
+        int anoAtual = Year.now().getValue();
+        if (filme.getAnoLancamento() < 1888 || filme.getAnoLancamento() > anoAtual) {
+            return "O ano de lançamento deve ser válido!";
+        }
+        
+        return null;
     }
 }

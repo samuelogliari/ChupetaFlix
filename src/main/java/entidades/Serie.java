@@ -45,10 +45,9 @@ public class Serie extends Midia {
         this.produtora = produtora;
     }
 
-    
-    
     @Override
     public String getTipo() {
         return "Série";
     }
+
 }

@@ -69,4 +69,16 @@ public class ControlaElenco {
             Mensagem.erro("Erro ao excluir integrante do elenco.");
         }
     }
+
+    //validações
+    public String validar(Elenco elenco) {
+        if (elenco.getNome() == null || elenco.getNome().trim().isEmpty()) {
+            return "O nome é obrigatório.";
+        }
+        if (elenco.getDtNascimento() != null
+                && elenco.getDtNascimento().isAfter(java.time.LocalDate.now())) {
+            return "A data de nascimento deve ser válida.";
+        }
+        return null;
+    }
 }

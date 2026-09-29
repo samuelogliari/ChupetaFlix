@@ -59,4 +59,23 @@ public class ControlaAnime {
             Mensagem.erro("Erro ao excluir anime.");
         }
     }
+
+    //validações
+    public String validar(Anime anime) {
+        if (anime.getTitulo() == null || anime.getTitulo().trim().isEmpty()) {
+            return "O título é obrigatório.";
+        }
+        if (anime.getGenero() == null || anime.getGenero().trim().isEmpty()) {
+            return "O gênero é obrigatório.";
+        }
+        if (anime.getEstudio() == null || anime.getEstudio().trim().isEmpty()) {
+            return "O estúdio é obrigatório.";
+        }
+        int anoAtual = java.time.Year.now().getValue();
+        if (anime.getAnoLancamento() < 1888 || anime.getAnoLancamento() > anoAtual) {
+            return "O ano de lançamento deve ser válido.";
+        }
+
+        return null;
+    }
 }

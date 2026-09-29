@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
- * 
+ *
  * @author samuel.ogliari
  */
 public class TelaAnime extends javax.swing.JFrame {
@@ -323,6 +323,13 @@ public class TelaAnime extends javax.swing.JFrame {
                 (int) spnAno.getValue()
         );
 
+        String erro = controladorAnime.validar(anime);
+
+        if (erro != null) {
+            Mensagem.aviso(erro);
+            return;
+        }
+
         if (codigo == 0) {
             controladorAnime.salvar(anime);
         } else {
@@ -333,16 +340,19 @@ public class TelaAnime extends javax.swing.JFrame {
 
         btnSalvar.setText("Salvar");
         montaTabela();
+        limpaCampos();
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void limpaCampos() {
         txtTitulo.setText("");
         txtGenero.setText("");
         txtEstudio.setText("");
-        spnAno.setValue(0);
+        spnAno.setValue(2000);
         cbTemManga.setSelectedItem("Sim");
         cbDublado.setSelectedItem("Sim");
-
         txtTitulo.requestFocus();
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    }
+
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String idString = String.valueOf(
@@ -411,7 +421,7 @@ public class TelaAnime extends javax.swing.JFrame {
     }//GEN-LAST:event_JLmangaMouseClicked
 
     private void JLdublagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLdublagemMouseClicked
-       cbDublado.requestFocus();
+        cbDublado.requestFocus();
     }//GEN-LAST:event_JLdublagemMouseClicked
 
     private void btnGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarActionPerformed

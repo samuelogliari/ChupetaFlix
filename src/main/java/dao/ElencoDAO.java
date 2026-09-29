@@ -52,7 +52,11 @@ public class ElencoDAO {
 
             comando.setString(1, elenco.getNome());
             comando.setString(2, elenco.getNacionalidade());
-            comando.setDate(3, Date.valueOf(elenco.getDtNascimento()));
+            if (elenco.getDtNascimento() == null) {
+                comando.setNull(3, java.sql.Types.DATE);
+            } else {
+                comando.setDate(3, Date.valueOf(elenco.getDtNascimento()));
+            }
 
             comando.executeUpdate();
         }
@@ -109,7 +113,11 @@ public class ElencoDAO {
         try (Connection conexao = Conexao.conectar(); PreparedStatement comando = conexao.prepareStatement(sql)) {
             comando.setString(1, elenco.getNome());
             comando.setString(2, elenco.getNacionalidade());
-            comando.setDate(3, Date.valueOf(elenco.getDtNascimento()));
+            if (elenco.getDtNascimento() == null) {
+                comando.setNull(3, java.sql.Types.DATE);
+            } else {
+                comando.setDate(3, Date.valueOf(elenco.getDtNascimento()));
+            }
             comando.setInt(4, elenco.getCodigo());
 
             comando.executeUpdate();
@@ -126,10 +134,8 @@ public class ElencoDAO {
     }
 
     private Elenco mapearElenco(ResultSet resultado) throws SQLException {
-        Elenco elenco = new Elenco(
-                resultado.getString("nome"),
-                resultado.getString("nacionalidade"),
-                resultado.getDate("dt_nascimento").toLocalDate()
+        Date dataNascimento = resultado.getDate("dt_nascimento");
+        Elenco elenco = new Elenco(resultado.getString("nome"), resultado.getString("nacionalidade"), dataNascimento != null ? dataNascimento.toLocalDate() : null
         );
         elenco.setCodigo(resultado.getInt("id"));
         return elenco;

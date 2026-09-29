@@ -196,7 +196,7 @@ public class TelaElenco extends javax.swing.JFrame {
                             .addComponent(btnSalvar)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
                                 .addComponent(btnListar)
                                 .addGap(11, 11, 11))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -250,6 +250,11 @@ public class TelaElenco extends javax.swing.JFrame {
         if (elenco == null) {
             return;
         }
+        String erro = controladorElenco.validar(elenco);
+        if (erro != null) {
+            Mensagem.aviso(erro);
+            return;
+        }
         if (codigoElenco == 0) {
             controladorElenco.salvar(elenco);
         } else {
@@ -266,12 +271,12 @@ public class TelaElenco extends javax.swing.JFrame {
     private Elenco criarElenco() {
         try {
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate dtNascimento = LocalDate.parse(txtDtNascimento.getText(), formato);
+            LocalDate dtNascimento = null;
 
-            return new Elenco(
-                    txtNome.getText(),
-                    txtNacionalidade.getText(),
-                    dtNascimento
+            if (!txtDtNascimento.getText().trim().isEmpty()) {
+                dtNascimento = LocalDate.parse(txtDtNascimento.getText(), formato);
+            }
+            return new Elenco(txtNome.getText(), txtNacionalidade.getText(), dtNascimento
             );
         } catch (DateTimeParseException ex) {
             Mensagem.erro("Informe a data de nascimento no formato dd/MM/yyyy");

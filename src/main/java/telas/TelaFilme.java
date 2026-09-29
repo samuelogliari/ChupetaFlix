@@ -305,6 +305,15 @@ public class TelaFilme extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Filme filme = criarFilme();
 
+        if (filme == null) {
+            return;
+        }
+        String erro = controladorFilme.validar(filme);
+        if (erro != null) {
+            Mensagem.aviso(erro);
+            return;
+        }
+
         if (codigoFilme == 0) {
             controladorFilme.salvar(filme);
         } else {
@@ -315,18 +324,24 @@ public class TelaFilme extends javax.swing.JFrame {
         btnSalvar.setText("Salvar");
         montaTabela();
         limpaCampos();
+        spnAno.setValue(2000);
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private Filme criarFilme() {
-        return new Filme(
-                txtTitulo.getText(),
-                txtGenero.getText(),
-                txtDiretor.getText(),
-                Integer.parseInt(txtDuracao.getText()),
-                txtClassificacao.getText(),
-                (int) spnAno.getValue()
-        );
+        try {
+            return new Filme(
+                    txtTitulo.getText(),
+                    txtGenero.getText(),
+                    txtDiretor.getText(),
+                    Integer.parseInt(txtDuracao.getText()),
+                    txtClassificacao.getText(),
+                    (int) spnAno.getValue()
+            );
+        } catch (NumberFormatException ex) {
+            Mensagem.aviso("A duração deve ser um número.");
+            return null;
+        }
     }
 
     private void limpaCampos() {
@@ -383,31 +398,31 @@ public class TelaFilme extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTituloActionPerformed
 
     private void JLtituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLtituloMouseClicked
-       txtTitulo.requestFocus();
+        txtTitulo.requestFocus();
     }//GEN-LAST:event_JLtituloMouseClicked
 
     private void JLgeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLgeneroMouseClicked
-      txtGenero.requestFocus();
+        txtGenero.requestFocus();
     }//GEN-LAST:event_JLgeneroMouseClicked
 
     private void JLdiretorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLdiretorMouseClicked
-       txtDiretor.requestFocus();
+        txtDiretor.requestFocus();
     }//GEN-LAST:event_JLdiretorMouseClicked
 
     private void JLduracaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLduracaoMouseClicked
-      txtDuracao.requestFocus();
+        txtDuracao.requestFocus();
     }//GEN-LAST:event_JLduracaoMouseClicked
 
     private void JLclassificacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLclassificacaoMouseClicked
-      txtClassificacao.requestFocus();
+        txtClassificacao.requestFocus();
     }//GEN-LAST:event_JLclassificacaoMouseClicked
 
     private void JLanoLancamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLanoLancamentoMouseClicked
-      spnAno.requestFocus();
+        spnAno.requestFocus();
     }//GEN-LAST:event_JLanoLancamentoMouseClicked
 
     private void btnGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarActionPerformed
-       TelaFilmeElenco telaFilmeElenco = new TelaFilmeElenco();
+        TelaFilmeElenco telaFilmeElenco = new TelaFilmeElenco();
         telaFilmeElenco.setVisible(true);
         this.dispose(); // fecha o menu atual
     }//GEN-LAST:event_btnGerenciarActionPerformed
