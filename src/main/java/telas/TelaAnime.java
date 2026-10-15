@@ -35,7 +35,12 @@ public class TelaAnime extends javax.swing.JFrame {
             "ID", "Título", "Gênero", "Estudio", "Ano", "Tem Mangá", "Tem Dublagem"
         };
 
-        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
         for (int i = 0; i < animes.size(); i++) {
             Anime anime = animes.get(i);
@@ -54,6 +59,7 @@ public class TelaAnime extends javax.swing.JFrame {
         }
 
         tblItens.setModel(modelo);
+        tblItens.getTableHeader().setReorderingAllowed(false);
 
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
