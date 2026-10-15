@@ -6,6 +6,7 @@ package controladores;
 
 import apoio.Mensagem;
 import dao.AnimeDAO;
+import dao.AnimeDAOjdbc;
 import entidades.Anime;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class ControlaAnime {
 
-    private final AnimeDAO animeDAO = new AnimeDAO();
+    private final AnimeDAO animeDAO = new AnimeDAOjdbc();
 
     public void salvar(Anime anime) {
         try {

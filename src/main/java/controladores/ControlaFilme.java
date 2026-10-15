@@ -6,6 +6,7 @@ package controladores;
 
 import apoio.Mensagem;
 import dao.FilmeDAO;
+import dao.FilmeDAOjdbc;
 import entidades.Filme;
 import java.sql.SQLException;
 import java.time.Year;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  */
 public class ControlaFilme {
 
-    private final FilmeDAO filmeDAO = new FilmeDAO();
+    private final FilmeDAO filmeDAO = new FilmeDAOjdbc();
 
     public void salvar(Filme filme) {
         try {

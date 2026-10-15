@@ -164,8 +164,22 @@ public class TelaAnime extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblItens);
+        if (tblItens.getColumnModel().getColumnCount() > 0) {
+            tblItens.getColumnModel().getColumn(0).setResizable(false);
+            tblItens.getColumnModel().getColumn(1).setResizable(false);
+            tblItens.getColumnModel().getColumn(2).setResizable(false);
+            tblItens.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         btnSalvar.setBackground(new java.awt.Color(153, 153, 153));
         btnSalvar.setForeground(new java.awt.Color(0, 0, 0));

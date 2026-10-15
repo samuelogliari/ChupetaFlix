@@ -6,6 +6,7 @@ package controladores;
 
 import apoio.Mensagem;
 import dao.SerieDAO;
+import dao.SerieDAOjdbc;
 import entidades.Serie;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class ControlaSerie {
 
-    private final SerieDAO serieDAO = new SerieDAO();
+    private final SerieDAO serieDAO = new SerieDAOjdbc();
 
     public void salvar(Serie serie) {
         try {

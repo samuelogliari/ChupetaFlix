@@ -6,6 +6,7 @@ package controladores;
 
 import apoio.Mensagem;
 import dao.ElencoDAO;
+import dao.ElencoDAOjdbc;
 import entidades.Elenco;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class ControlaElenco {
 
-    private final ElencoDAO elencoDAO = new ElencoDAO();
+    private final ElencoDAO elencoDAO = new ElencoDAOjdbc();
 
     public void salvar(Elenco elenco) {
         try {

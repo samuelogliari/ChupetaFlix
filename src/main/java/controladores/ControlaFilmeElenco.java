@@ -6,6 +6,7 @@ package controladores;
 
 import apoio.Mensagem;
 import dao.FilmeElencoDAO;
+import dao.FilmeElencoDAOjdbc;
 import entidades.Elenco;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class ControlaFilmeElenco {
 
-    private final FilmeElencoDAO filmeElencoDAO = new FilmeElencoDAO();
+    private final FilmeElencoDAO filmeElencoDAO = new FilmeElencoDAOjdbc();
 
     public void adicionar(int filmeId, int elencoId) {
         try {

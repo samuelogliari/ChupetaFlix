@@ -6,6 +6,7 @@ package controladores;
 
 import apoio.Mensagem;
 import dao.AnimeElencoDAO;
+import dao.AnimeElencoDAOjdbc;
 import entidades.Elenco;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class ControlaAnimeElenco {
 
-    private final AnimeElencoDAO animeElencoDAO = new AnimeElencoDAO();
+    private final AnimeElencoDAO animeElencoDAO = new AnimeElencoDAOjdbc();
 
     public void adicionar(int animeId, int elencoId) {
         try {

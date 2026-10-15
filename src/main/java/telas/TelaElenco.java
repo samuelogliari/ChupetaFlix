@@ -114,8 +114,22 @@ public class TelaElenco extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblItens);
+        if (tblItens.getColumnModel().getColumnCount() > 0) {
+            tblItens.getColumnModel().getColumn(0).setResizable(false);
+            tblItens.getColumnModel().getColumn(1).setResizable(false);
+            tblItens.getColumnModel().getColumn(2).setResizable(false);
+            tblItens.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +183,7 @@ public class TelaElenco extends javax.swing.JFrame {
         });
 
         JLdtNascimento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        JLdtNascimento.setText("Data Nascimento:");
+        JLdtNascimento.setText("Data Nascimento:       (dd/MM/aaaa)");
         JLdtNascimento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JLdtNascimentoMouseClicked(evt);

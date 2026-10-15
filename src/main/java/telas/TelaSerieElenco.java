@@ -157,8 +157,22 @@ public class TelaSerieElenco extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblResultados);
+        if (tblResultados.getColumnModel().getColumnCount() > 0) {
+            tblResultados.getColumnModel().getColumn(0).setResizable(false);
+            tblResultados.getColumnModel().getColumn(1).setResizable(false);
+            tblResultados.getColumnModel().getColumn(2).setResizable(false);
+            tblResultados.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         JLresultados.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         JLresultados.setText("Resultados:");
@@ -176,8 +190,22 @@ public class TelaSerieElenco extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tblElenco);
+        if (tblElenco.getColumnModel().getColumnCount() > 0) {
+            tblElenco.getColumnModel().getColumn(0).setResizable(false);
+            tblElenco.getColumnModel().getColumn(1).setResizable(false);
+            tblElenco.getColumnModel().getColumn(2).setResizable(false);
+            tblElenco.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         JLelenco.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         JLelenco.setText("Elenco:");
