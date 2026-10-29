@@ -203,7 +203,7 @@ public class TelaFilme extends javax.swing.JFrame {
         });
 
         JLduracao.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        JLduracao.setText("Duração:");
+        JLduracao.setText("Duração:             (em minutos, somente números)");
         JLduracao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JLduracaoMouseClicked(evt);

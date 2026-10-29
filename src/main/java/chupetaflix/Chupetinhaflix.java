@@ -4,6 +4,7 @@
 package chupetaflix;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import telas.TelaLogin;
 import telas.TelaMenu;
 
 /**
@@ -14,7 +15,8 @@ public class Chupetinhaflix {
 
     public static void main(String[] args) {
         FlatMacDarkLaf.setup(); // import do flatlaf para estilo
-        TelaMenu tm = new TelaMenu();
-        tm.setVisible(true);
+        TelaLogin tl = new TelaLogin();
+        tl.setVisible(true);
+        
     }
 }

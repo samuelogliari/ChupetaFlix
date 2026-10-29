@@ -311,7 +311,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Dura&#xe7;&#xe3;o:"/>
+        <Property name="text" type="java.lang.String" value="Dura&#xe7;&#xe3;o:             (em minutos, somente n&#xfa;meros)"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JLduracaoMouseClicked"/>

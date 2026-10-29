@@ -77,3 +77,14 @@ FOREIGN KEY (elenco_id) REFERENCES elenco (id) ON DELETE CASCADE
 
 );
 
+-- professor passou codigo pronto, corrigir caso necessario
+CREATE TABLE usuario (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    login VARCHAR(50) NOT NULL UNIQUE,
+    senha_hash CHAR(64) NOT NULL
+);
+
+INSERT INTO usuario (nome, login, senha_hash) VALUES
+('Administrador', 'admin', encode(sha256('admin'::bytea), 'hex'));
+
