@@ -33,6 +33,7 @@ public class TelaAnimeElenco extends javax.swing.JFrame {
 
     public TelaAnimeElenco() {
         initComponents();
+        tblResultados.getTableHeader().setReorderingAllowed(false);
         setSize(707, 1058);
         setLocationRelativeTo(null);
         montaAnimes();
@@ -75,6 +76,7 @@ public class TelaAnimeElenco extends javax.swing.JFrame {
             modelo.addRow(linha);
         }
         tblElenco.setModel(modelo);
+        tblElenco.getTableHeader().setReorderingAllowed(false);
         DefaultTableCellRenderer centralizador = new DefaultTableCellRenderer();
         centralizador.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -313,6 +315,7 @@ public class TelaAnimeElenco extends javax.swing.JFrame {
 
         }
         tblResultados.setModel(modelo);
+        tblResultados.getTableHeader().setReorderingAllowed(false);
         DefaultTableCellRenderer centralizador = new DefaultTableCellRenderer();
         centralizador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 

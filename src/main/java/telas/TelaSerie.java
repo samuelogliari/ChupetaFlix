@@ -23,6 +23,7 @@ public class TelaSerie extends javax.swing.JFrame {
 
     public TelaSerie() {
         initComponents();
+        tblItens.getTableHeader().setReorderingAllowed(false);
         setLocationRelativeTo(null);
         spnAno.setValue(2000);
         montaTabela();

@@ -33,6 +33,9 @@ public class TelaFilmeElenco extends javax.swing.JFrame {
 
     public TelaFilmeElenco() {
         initComponents();
+        tblResultados.getTableHeader().setReorderingAllowed(false);
+        tblElenco.getTableHeader().setReorderingAllowed(false);
+
         setSize(707, 1058);
         setLocationRelativeTo(null);
         montaFilmes();

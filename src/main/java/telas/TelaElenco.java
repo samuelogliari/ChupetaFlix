@@ -26,6 +26,7 @@ public class TelaElenco extends javax.swing.JFrame {
 
     public TelaElenco() {
         initComponents();
+        tblItens.getTableHeader().setReorderingAllowed(false);
         setLocationRelativeTo(null);
         montaTabela();
     }

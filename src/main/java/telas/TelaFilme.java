@@ -23,6 +23,7 @@ public class TelaFilme extends javax.swing.JFrame {
 
     public TelaFilme() {
         initComponents();
+        tblItens.getTableHeader().setReorderingAllowed(false);
         setLocationRelativeTo(null);
         spnAno.setValue(2000);
         montaTabela();
