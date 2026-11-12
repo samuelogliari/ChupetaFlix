@@ -24,6 +24,13 @@ public class Conexao {
     private static final String SENHA = dotenv.get("POSTGRES_PASSWORD");
 
     public static Connection conectar() throws SQLException {
+
+        if (USUARIO == null || SENHA == null) {
+            throw new IllegalStateException(
+                    "POSTGRES_USER ou POSTGRES_PASSWORD não encontrados no arquivo chupetaflix.env"
+            );
+        }
+
         return DriverManager.getConnection(URL, USUARIO, SENHA);
     }
 }
