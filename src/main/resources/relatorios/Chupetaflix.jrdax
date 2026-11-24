@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft WebStudioversion 10.1.1 -->
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl">
+  <name>ChupetaFlix</name>
+  <username>postgres</username>
+  <password>postgres</password>
+  <url>jdbc:postgresql://localhost:5432/chupetaflix</url>
+  <driver>org.postgresql.Driver</driver>
+</jdbcDataAdapter>
