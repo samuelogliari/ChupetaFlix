@@ -47,6 +47,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu");
 
         btnAnime.setBackground(new java.awt.Color(51, 0, 0));
         btnAnime.setForeground(new java.awt.Color(255, 255, 255));

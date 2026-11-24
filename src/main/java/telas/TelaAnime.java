@@ -104,6 +104,7 @@ public class TelaAnime extends javax.swing.JFrame {
         btnGerenciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Animes");
         setBackground(new java.awt.Color(51, 51, 51));
 
         JLtitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

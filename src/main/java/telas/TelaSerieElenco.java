@@ -108,6 +108,7 @@ public class TelaSerieElenco extends javax.swing.JFrame {
         JLelenco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Elenco de Série");
 
         JLserie.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         JLserie.setForeground(new java.awt.Color(255, 255, 255));

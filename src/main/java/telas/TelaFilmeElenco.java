@@ -104,6 +104,7 @@ public class TelaFilmeElenco extends javax.swing.JFrame {
         JLelenco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Elenco de Filme");
         setPreferredSize(new java.awt.Dimension(1030, 579));
 
         JLfilme.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

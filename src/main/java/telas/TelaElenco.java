@@ -85,6 +85,7 @@ public class TelaElenco extends javax.swing.JFrame {
         txtDtNascimento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Elenco");
         setBackground(new java.awt.Color(51, 51, 51));
 
         JLnome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

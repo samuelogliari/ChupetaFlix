@@ -105,6 +105,7 @@ public class TelaAnimeElenco extends javax.swing.JFrame {
         JLelenco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Elenco de Anime");
 
         JLanime.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         JLanime.setForeground(new java.awt.Color(255, 255, 255));
