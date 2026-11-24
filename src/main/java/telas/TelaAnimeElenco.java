@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -34,6 +35,9 @@ public class TelaAnimeElenco extends javax.swing.JFrame {
     public TelaAnimeElenco() {
         initComponents();
         tblResultados.getTableHeader().setReorderingAllowed(false);
+
+        tblResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tblElenco.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setSize(707, 1058);
         setLocationRelativeTo(null);
         montaAnimes();

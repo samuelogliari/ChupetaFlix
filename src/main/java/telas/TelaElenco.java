@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -26,6 +27,7 @@ public class TelaElenco extends javax.swing.JFrame {
 
     public TelaElenco() {
         initComponents();
+        tblItens.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tblItens.getTableHeader().setReorderingAllowed(false);
         setLocationRelativeTo(null);
         montaTabela();
