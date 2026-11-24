@@ -458,7 +458,7 @@ public class TelaFilme extends javax.swing.JFrame {
 
     private void btnGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarRelatorioActionPerformed
         try {
-            relatorios.GeradorRelatorio.gerar();
+            relatorios.GeradorRelatorio.gerar("RelatorioFilmes");
 
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(

@@ -1,0 +1,123 @@
+<!-- Created with Jaspersoft WebStudio  -->
+<jasperReport pageWidth="595" pageHeight="842" name="RelatórioChupetaflix" uuid="994e8403-1629-40c7-8475-f2b9fee7cd8f" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+  <property name="net.sf.jasperreports.data.adapter" value="Chupetaflix.jrdax"/>
+  <property name="com.jaspersoft.studio.zoom" value="1.6487212707001282"/>
+  <query language="SQL"><![CDATA[SELECT
+    id,
+    titulo,
+    genero,
+    ano_lancamento,
+    estudio,
+    tem_manga,
+    dublado
+FROM animes
+ORDER BY titulo;]]></query>
+  <field name="id" class="java.lang.Integer">
+    <property name="net.sf.jasperreports.sql.field.column.name" value="id"/>
+    <property name="net.sf.jasperreports.sql.field.column.label" value="id"/>
+    <property name="net.sf.jasperreports.sql.field.column.index" value="0"/>
+    <property name="net.sf.jasperreports.sql.field.column.size" value="10"/>
+    <property name="com.jaspersoft.studio.field.tree.path" value="animes"/>
+  </field>
+  <field name="titulo" class="java.lang.String">
+    <property name="net.sf.jasperreports.sql.field.column.name" value="titulo"/>
+    <property name="net.sf.jasperreports.sql.field.column.label" value="titulo"/>
+    <property name="net.sf.jasperreports.sql.field.column.index" value="1"/>
+    <property name="net.sf.jasperreports.sql.field.column.size" value="255"/>
+    <property name="com.jaspersoft.studio.field.tree.path" value="animes"/>
+  </field>
+  <field name="genero" class="java.lang.String">
+    <property name="net.sf.jasperreports.sql.field.column.name" value="genero"/>
+    <property name="net.sf.jasperreports.sql.field.column.label" value="genero"/>
+    <property name="net.sf.jasperreports.sql.field.column.index" value="2"/>
+    <property name="net.sf.jasperreports.sql.field.column.size" value="100"/>
+    <property name="com.jaspersoft.studio.field.tree.path" value="animes"/>
+  </field>
+  <field name="ano_lancamento" class="java.lang.Integer">
+    <property name="net.sf.jasperreports.sql.field.column.name" value="ano_lancamento"/>
+    <property name="net.sf.jasperreports.sql.field.column.label" value="ano_lancamento"/>
+    <property name="net.sf.jasperreports.sql.field.column.index" value="3"/>
+    <property name="net.sf.jasperreports.sql.field.column.size" value="10"/>
+    <property name="com.jaspersoft.studio.field.tree.path" value="animes"/>
+  </field>
+  <field name="estudio" class="java.lang.String">
+    <property name="net.sf.jasperreports.sql.field.column.name" value="estudio"/>
+    <property name="net.sf.jasperreports.sql.field.column.label" value="estudio"/>
+    <property name="net.sf.jasperreports.sql.field.column.index" value="4"/>
+    <property name="net.sf.jasperreports.sql.field.column.size" value="255"/>
+    <property name="com.jaspersoft.studio.field.tree.path" value="animes"/>
+  </field>
+  <field name="tem_manga" class="java.lang.Boolean">
+    <property name="net.sf.jasperreports.sql.field.column.name" value="tem_manga"/>
+    <property name="net.sf.jasperreports.sql.field.column.label" value="tem_manga"/>
+    <property name="net.sf.jasperreports.sql.field.column.index" value="5"/>
+    <property name="net.sf.jasperreports.sql.field.column.size" value="1"/>
+    <property name="com.jaspersoft.studio.field.tree.path" value="animes"/>
+  </field>
+  <field name="dublado" class="java.lang.Boolean">
+    <property name="net.sf.jasperreports.sql.field.column.name" value="dublado"/>
+    <property name="net.sf.jasperreports.sql.field.column.label" value="dublado"/>
+    <property name="net.sf.jasperreports.sql.field.column.index" value="6"/>
+    <property name="net.sf.jasperreports.sql.field.column.size" value="1"/>
+    <property name="com.jaspersoft.studio.field.tree.path" value="animes"/>
+  </field>
+  <background height="0"/>
+  <title height="75">
+    <element kind="staticText" x="178" y="25" width="200" height="30" forecolor="#000000" backcolor="#000000" uuid="833b12b6-3ea4-4364-b33e-6ed017f52626" hTextAlign="Center" fontSize="18" bold="true">
+      <text><![CDATA[ChupetaFlix]]></text>
+    </element>
+  </title>
+  <pageHeader height="35">
+    <element kind="staticText" x="0" y="0" width="34" height="35" forecolor="#000000" backcolor="#000000" uuid="a0ee9194-2177-4bb3-9503-51b4be8301e5" hTextAlign="Center" fontSize="15">
+      <text><![CDATA[ID]]></text>
+    </element>
+    <element kind="staticText" x="34" y="0" width="120" height="35" forecolor="#000000" backcolor="#000000" uuid="fc638237-7677-46a4-b841-ae592afd49b8" hTextAlign="Center" fontSize="15">
+      <text><![CDATA[Título]]></text>
+    </element>
+    <element kind="staticText" x="154" y="0" width="90" height="35" forecolor="#000000" backcolor="#000000" uuid="82211312-847e-4a74-b6f2-8234a4547965" hTextAlign="Center" fontSize="15">
+      <text><![CDATA[Gênero]]></text>
+    </element>
+    <element kind="staticText" x="244" y="0" width="42" height="35" forecolor="#000000" backcolor="#000000" uuid="b925afa3-412f-4292-ae7d-adcf6cb17cf9" hTextAlign="Center" fontSize="15">
+      <text><![CDATA[Ano]]></text>
+    </element>
+    <element kind="staticText" x="286" y="0" width="102" height="35" forecolor="#000000" backcolor="#000000" uuid="b4238969-cd14-4e28-8a8d-5ac96b3028f1" hTextAlign="Center" fontSize="15">
+      <text><![CDATA[Estudio]]></text>
+    </element>
+    <element kind="staticText" x="451" y="0" width="104" height="35" forecolor="#000000" backcolor="#000000" uuid="83b3bdc3-d92f-47ef-b913-a54860c594d3" hTextAlign="Center" fontSize="15">
+      <text><![CDATA[Dublagem]]></text>
+    </element>
+    <element kind="staticText" x="388" y="0" width="63" height="35" forecolor="#000000" backcolor="#000000" uuid="eb86882f-463f-46e9-bf46-6715435392b5" hTextAlign="Center" fontSize="15">
+      <text><![CDATA[Mangá]]></text>
+    </element>
+  </pageHeader>
+  <detail>
+    <band height="60">
+      <element kind="textField" x="34" y="0" width="120" height="58" forecolor="#000000" backcolor="#000000" uuid="2cac32f7-c98b-4ab9-97d8-c25dba5d946e" hTextAlign="Center">
+        <expression><![CDATA[$F{titulo}]]></expression>
+      </element>
+      <element kind="textField" x="154" y="0" width="90" height="58" forecolor="#000000" backcolor="#000000" uuid="0123ae8e-dd2e-408a-999a-caf3862cbf04" hTextAlign="Center">
+        <expression><![CDATA[$F{genero}]]></expression>
+      </element>
+      <element kind="textField" x="244" y="0" width="42" height="58" forecolor="#000000" backcolor="#000000" uuid="0f6a71a1-ca6a-4eb6-9dae-c0560571f0a9" hTextAlign="Center">
+        <expression><![CDATA[$F{ano_lancamento}]]></expression>
+      </element>
+      <element kind="textField" x="0" y="0" width="34" height="58" forecolor="#000000" backcolor="#000000" uuid="ec2d2cae-5ed4-4936-a78b-cdd365ffb924" hTextAlign="Center">
+        <expression><![CDATA[$F{id}]]></expression>
+      </element>
+      <element kind="textField" x="286" y="0" width="102" height="58" uuid="3c38e3cc-23f8-45ea-9e02-9ce8104c1968" hTextAlign="Center">
+        <expression><![CDATA[$F{estudio}]]></expression>
+      </element>
+      <element kind="textField" x="388" y="0" width="63" height="58" uuid="1fa8bacf-0f47-488a-ad1e-110dbbf759c6" hTextAlign="Center">
+        <expression><![CDATA[$F{tem_manga}]]></expression>
+      </element>
+      <element kind="textField" x="451" y="0" width="104" height="58" uuid="c25c7d60-078d-4e50-97b5-54dd26293e71" hTextAlign="Center">
+        <expression><![CDATA[$F{dublado}]]></expression>
+      </element>
+    </band>
+  </detail>
+  <pageFooter height="54">
+    <element kind="textField" x="0" y="34" width="178" height="20" forecolor="#000000" backcolor="#000000" uuid="4c0b193e-fcb0-4169-aece-9e6ff49bb618">
+      <expression><![CDATA["Página " + $V{PAGE_NUMBER}]]></expression>
+    </element>
+  </pageFooter>
+</jasperReport>

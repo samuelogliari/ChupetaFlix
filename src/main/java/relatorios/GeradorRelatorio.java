@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package relatorios;
 
 import banco.Conexao;
@@ -18,14 +19,14 @@ import net.sf.jasperreports.engine.JasperReport;
 
 public class GeradorRelatorio {
 
-    public static void gerar() throws Exception {
+    public static void gerar(String nomeRelatorio) throws Exception {
 
         InputStream arquivo = GeradorRelatorio.class
-                .getResourceAsStream("/relatorios/RelatorioFilmes.jrxml");
+                .getResourceAsStream("/relatorios/" + nomeRelatorio + ".jrxml");
 
         if (arquivo == null) {
             throw new Exception(
-                    "Relatório RelatorioFilmes.jrxml não encontrado!"
+                    "Relatório " + nomeRelatorio + " não encontrado!"
             );
         }
 
@@ -41,20 +42,19 @@ public class GeradorRelatorio {
                     conexao
             );
 
-            // Cria a pasta onde o PDF será salvo
             File pasta = new File("relatorios");
             pasta.mkdirs();
 
-            // Define o arquivo PDF
-            File pdf = new File(pasta, "RelatorioFilmes.pdf");
+            File pdf = new File(
+                    pasta,
+                    nomeRelatorio + ".pdf"
+            );
 
-            // Exporta o relatório
             JasperExportManager.exportReportToPdfFile(
                     resultado,
                     pdf.getAbsolutePath()
             );
 
-            // Abre o PDF automaticamente
             if (Desktop.isDesktopSupported()) {
                 Desktop.getDesktop().open(pdf);
             }
